@@ -20,25 +20,8 @@
 	</head>
 	<body class="Hi there">
 		<div class="container">
-			<header class="share">
-				<div class="share__container">
-					<div class="share__top">
-						<aside class="share__logo">DREAMSHARE</aside>
-						<aside class="share__account">
-							<a href="#" class="share__log-in">Log in</a>
-							<a href="#" class="share__sign-up">Sign up</a>
-						</aside>
-					</div>
-					<div class="share__title">SHARE YOUR HOLIDAY DREAM</div>
-					<div class="share__text">
-						And find the perfect partner to fullfill it
-					</div>
-					<div class="share__button">
-						<a href="#" class="share__button-a">Find your holiday partner</a>
-					</div>
-				</div>
-			</header>
-			<article class="description">
+			@@include("./_header.html")
+			<section class="description">
 				<div class="description__container">
 					<div class="description__how how">
 						<div class="description__title">How Dreamshare works?</div>
@@ -211,50 +194,8 @@
 						</div>
 					</div>
 				</div>
-			</article>
-			<footer>
-				<div class="common-info">
-					<div class="common-info__container">
-						<div class="common-info__row">
-							<div class="common-info__column">
-								<div class="common-info__logo">DREAMSHARE</div>
-							</div>
-							<div>
-								<div class="common-info__title">
-									Company
-								</div>
-								<ul class="common-info__column">
-									<li>
-										<a href="#" class="common-info__a">About</a>
-									</li>
-									<li>
-										<a href="#" class="common-info__a">Contact</a>
-									</li>
-									<li>
-										<a href="#" class="common-info__a">Press</a>
-									</li>
-									<li>
-										<a href="#" class="common-info__a">Blog</a>
-									</li>
-									<li>
-										<a href="#" class="common-info__a">Terms and Privacy</a>
-									</li>
-									<li>
-										<a href="#" class="common-info__a">Help</a>
-									</li>
-								</ul>
-							</div>
-							<div class="common-info__column">
-								<div class="common-info__title">Partners</div>
-							</div>
-						</div>
-						<div class="common-info__areto">
-							<div class="common-info__designed">DESIGNED BY</div>
-							<img src="./img/ARETO.png" alt="#" />
-						</div>
-					</div>
-				</div>
-			</footer>
+			</section>
+			@@include("./_footer.html")
 		</div>
 	</body>
 </html>
