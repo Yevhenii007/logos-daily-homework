@@ -1,0 +1,667 @@
+@import 'base/base';
+@import 'base/mixins';
+@import 'base/variabels';
+@import 'base/fonts';
+
+$montserrat: "Montserrat", sans-serif;
+$roboto: "Roboto", sans-serif;
+
+
+.container {
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+}
+.share {
+	&__container {
+		background: url(../img/Header.png);
+		width: 100%;
+		max-width: 1440px;
+		height: 100%;
+		max-height: 445px;
+		padding: 45px 0 210px 0;
+	}
+
+	&__top {
+		@include flex(flex, row, space-between, stretch, stretch);
+
+		width: 100%;
+		max-width: 1440px - 2 * 250px + 100px;
+		margin: 0 auto;
+	}
+
+	&__logo {
+		@include text($montserrat, normal, #ffffff, bold, 20px, 24px);
+		margin-left: 50px;
+	}
+
+	&__account {
+		display: flex;
+	}
+
+	&__log-in {
+		@include text($montserrat, normal, #ffffff, normal, 14px, 36px);
+		text-decoration: none;
+		width: 45px;
+	}
+
+	&__sign-up {
+		@include text($montserrat, normal, #ffffff, normal, 14px, 32px);
+		text-decoration: none;
+		height: 100%;
+		max-height: 32px;
+		width: 55px;
+
+		border: 2px solid #ffffff;
+		border-radius: 40px;
+		padding: 0 16px;
+		margin-left: 19px;
+		margin-right: 50px;
+	}
+
+	&__title {
+		@include text($montserrat, normal, #ffffff, bold, 52px, 63px);
+
+		text-align: center;
+		max-width: 470px;
+		margin: 153px auto 0;
+	}
+
+	&__text {
+		@include text($roboto, normal, #f7f3f2, 300, 24px, 24px);
+
+		text-align: center;
+		margin-top: 30px;
+	}
+
+	&__button {
+		margin-top: 33px;
+		text-align: center;
+	}
+
+	&__button-a {
+		background: #ff4e50;
+		border-radius: 40px;
+
+		@include text($montserrat, normal, #ffffff, bold, 14px, 40px);
+		text-decoration: none;
+		width: 225px;
+		padding: 10px 20px;
+	}
+}
+.description {
+	padding: 0 10px;
+
+	&__container {
+		width: 100%;
+		max-width: 940px;
+		height: 100%;
+		margin: 0 auto;
+	}
+
+	&__how {
+		width: 100%;
+	}
+
+	&__title {
+		@include text($montserrat, normal, #444444, bold, 26px, 32px);
+
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		align-items: center;
+		margin: 95px auto 0;
+		text-align: center;
+	}
+
+	&__meet {
+		width: 100%;
+	}
+
+	&__img {
+		position: relative;
+	}
+
+	&__img-bg {
+		border-radius: 50%;
+		max-width: 120px;
+		height: 120px;
+	}
+
+	&__icon-bg {
+		@include flex(flex, row, center, center, stretch);
+
+		position: absolute;
+		bottom: 0;
+		right: 0;
+
+		width: 32px;
+		height: 32px;
+
+		border: 2px solid #ffffff;
+		border-radius: 50%;
+	}
+
+	&__icon-music {
+		background: #ff4e50;
+	}
+
+	&__icon-brush {
+		background: #19d4ca;
+	}
+
+	&__icon-camera {
+		background: #ffa710;
+	}
+
+	&__icon-airplane {
+		background: #667df3;
+	}
+
+	&__discover {
+		width: 100%;
+	}
+
+	&__create {
+	}
+}
+
+.how {
+	&__row {
+		width: 100%;
+		margin-top: 35px;
+		@include flex(flex, row, space-between, stretch, stretch);
+	}
+
+	&__column-first {
+		background-image: url(../img/how/Step-1-image.png);
+		@include col-steps(100%, 250px, 350px, 25px);
+		@include flex(flex, column, flex-end, stretch, stretch);
+	}
+
+	&__column-midle {
+		background-image: url(../img/how/Step-2-image.png);
+		@include col-steps(100%, 250px, 350px, 25px);
+		@include flex(flex, column, flex-end, stretch, stretch);
+		margin-left: 20px;
+	}
+
+	&__column-last {
+		background-image: url(../img/how/Step-3-image.png);
+		@include col-steps(100%, 250px, 350px, 25px);
+		@include flex(flex, column, flex-end, stretch, stretch);
+		margin-left: 20px;
+	}
+
+	&__step {
+		@include text($montserrat, normal, #ffffff, normal, 10px, 20px);
+
+		width: 70px;
+		background: #ff4e50;
+		border-radius: 40px;
+		letter-spacing: 2px;
+
+		@include flex(flex, row, center, center, stretch);
+	}
+
+	&__title {
+		@include text($montserrat, normal, #ffffff, bold, 24px, 29px);
+		margin-top: 19px;
+	}
+
+	&__text {
+		@include text($roboto, normal, #e3e3e3, 300, 14px, 14px);
+		margin-top: 21px;
+	}
+}
+.meet {
+	&__row {
+		@include flex(flex, row, center, stretch, stretch);
+		margin-top: 35px;
+		margin-left: -20px;
+	}
+
+	&__row-first {
+		@include flex(flex, row, space-between, stretch, stretch);
+	}
+
+	&__row-second {
+		@include flex(flex, row, space-between, stretch, stretch);
+	}
+
+	&__column {
+		@include flex(flex, column, flex-start, center, stretch);
+		width: 100%;
+		max-width: 221px;
+		margin-left: 20px;
+	}
+
+	&__title {
+		@include text($montserrat, normal, #444444, bold, 14px, 17px);
+		margin: 18px;
+		text-align: center;
+	}
+
+	&__text {
+		@include text($roboto, normal, #666666, 300, 14px, 14px);
+		text-align: center;
+	}
+
+	&__button {
+		margin: auto;
+		@include flex(flex, row, center, center, stretch);
+		width: 180px;
+
+		background: #ffffff;
+		border: 2px solid #ff4e50;
+		box-sizing: border-box;
+		border-radius: 40px;
+
+		margin-top: 35px;
+	}
+
+	&__button-a {
+		@include text($montserrat, normal, #ff4e50, bold, 14px, 36px);
+		text-decoration: none;
+	}
+}
+.uil {
+}
+.uil-music {
+}
+.uil-palette {
+}
+.uil-camera {
+}
+.uil-plane-departure {
+}
+
+.discover {
+	&__img {
+		margin-top: 35px;
+		height: 970px;
+		@include flex(flex, wrap, space-between, stretch, space-between);
+	}
+
+	&__sport-text {
+		@include text($montserrat, normal, #ffffff, bold, 22px, 27px);
+		text-align: center;
+	}
+
+	&__img-first {
+		width: 100%;
+		@include flex(flex, row, space-between, stretch, stretch);
+	}
+
+	&__img-second {
+		width: 100%;
+		@include flex(flex, row, space-between, stretch, stretch);
+	}
+
+	&__img-third {
+		width: 100%;
+		@include flex(flex, row, space-between, stretch, stretch);
+	}
+
+	&__img-bg-sports {
+		background-image: url(../img/sport/Sport-1.png);
+		@include img-bg-sports(100%, 300px, 310px);
+		@include flex(flex, row, center, center, stretch);
+	}
+
+	&__img-bg-wellness {
+		background-image: url(../img/sport/Sport-2.png);
+		@include img-bg-sports(100%, 300px, 310px);
+		@include flex(flex, row, center, center, stretch);
+		margin-left: 20px;
+	}
+
+	&__img-bg-extreme {
+		background-image: url(../img/sport/Sport-3.png);
+		@include img-bg-sports(100%, 300px, 310px);
+		@include flex(flex, row, center, center, stretch);
+		margin-left: 20px;
+	}
+
+	&__img-bg-games {
+		background-image: url(../img/sport/Sport-4.png);
+		@include img-bg-sports(100%, 300px, 310px);
+		@include flex(flex, row, center, center, stretch);
+	}
+
+	&__img-bg-culture {
+		background-image: url(../img/sport/Sport-5.png);
+		@include img-bg-sports(100%, 620px, 310px);
+		@include flex(flex, row, center, center, stretch);
+		margin-left: 20px;
+	}
+
+	&__img-bg-enjoyment {
+		background-image: url(../img/sport/Sport-6.png);
+		@include img-bg-sports(100%, 620px, 310px);
+		@include flex(flex, row, center, center, stretch);
+	}
+
+	&__img-bg-trevelling {
+		background-image: url(../img/sport/Sport-7.png);
+		@include img-bg-sports(100%, 300px, 310px);
+		@include flex(flex, row, center, center, stretch);
+		margin-left: 20px;
+	}
+}
+.create {
+	@include flex(flex, column, flex-start, center, stretch);
+
+	&__text {
+		margin-top: 45px;
+		text-align: center;
+
+		@include text($roboto, normal, #666666, 300, 18px, 24px);
+	}
+
+	&__another {
+		margin: 25px 0 100px 0;
+		text-align: center;
+		width: 550px;
+		display: flex;
+	}
+
+	&__input {
+		@include text($roboto, normal, #999999, 300, 14px, 40px);
+
+		width: 100%;
+		max-width: 299px;
+
+		background: #ffffff;
+		border: 1px solid #d4d4d4;
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.073313);
+		border-radius: 3px;
+		padding-left: 20px;
+	}
+
+	&__button {
+		width: 172px;
+		background: #ff4e50;
+		border-radius: 40px;
+		margin-left: 20px;
+	}
+
+	&__button-a {
+		@include text($montserrat, normal, #ffffff, bold, 14px, 40px);
+		text-decoration: none;
+		text-align: center;
+	}
+}
+.common-info {
+	border-top: 2px solid #ff4e50;
+	@include flex(flex, row, center, stretch, stretch);
+	padding: 0 10px;
+
+	&__container {
+		width: 100%;
+		max-width: 940px;
+		@include flex(flex, row, space-between, stretch, stretch);
+	}
+
+	&__row {
+		margin: 35px 0;
+		width: 100%;
+		max-width: 545px;
+		@include flex(flex, row, space-between, stretch, stretch);
+	}
+
+	&__column {
+	}
+
+	&__logo {
+		@include text($montserrat, normal, #ff4e50, normal, 16px, 20px);
+	}
+
+	&__a {
+		@include text($roboto, normal, #999999, 300, 14px, 26px);
+		text-decoration: none;
+	}
+
+	&__title {
+		@include text($montserrat, normal, #444444, bold, 14px, 17px);
+		margin-bottom: 10px;
+	}
+
+	&__areto {
+		margin: 35px 0 0 30px;
+	}
+
+	&__designed {
+		@include text($montserrat, normal, #cccccc, bold, 10px, 12px);
+		text-align: right;
+		letter-spacing: 1px;
+		margin-bottom: 7px;
+	}
+}
+
+@media (max-width: 600px) {
+	.share {
+		&__container {
+			background: url(../img/small/Header_small.png);
+			max-width: 890px;
+			max-height: 365px;
+			padding: 22px 0 153px 0;
+		}
+
+		&__top {
+			@include flex(flex, column-reverse, space-between, center, stretch);
+
+			max-width: 155px;
+			height: 155px;
+		}
+
+		&__logo {
+			margin-left: 0;
+		}
+
+		&__sign-up {
+			margin-right: 0;
+		}
+
+		&__title {
+			@include text($montserrat, normal, #ffffff, bold, 30px, 37px);
+			max-width: 272px;
+			margin: 25px auto 0;
+		}
+
+		&__text {
+			@include text($roboto, normal, #f7f3f2, 300, 18px, 24px);
+			max-width: 272px;
+			margin: 5px auto 0;
+		}
+
+		&__button {
+			margin-top: 15px;
+		}
+
+		&__button-a {
+			padding: 10px 45px;
+		}
+	}
+	.description {
+		&__title {
+			@include text($montserrat, normal, #444444, bold, 22px, 27px);
+			margin: 35px auto 0;
+		}
+	}
+	.how {
+		&__row {
+			margin-top: 15px;
+			@include flex(flex, column, space-between, center, stretch);
+		}
+
+		&__column-first {
+			background-image: url(../img/small/how/Step-1-small.png);
+			@include col-steps(100%, 245px, 225px, 0 30px 15px 25px);
+			margin: auto;
+		}
+
+		&__column-midle {
+			background-image: url(../img/small/how/Step-2-small.png);
+			@include col-steps(100%, 245px, 225px, 0 30px 15px 25px);
+			margin: 10px auto 0;
+		}
+
+		&__column-last {
+			background-image: url(../img/small/how/Step-3-small.png);
+			@include col-steps(100%, 245px, 225px, 0 30px 15px 25px);
+			margin: 10px auto 0;
+		}
+	}
+	.meet {
+		&__row {
+			@include flex(flex, wrap, space-between, stretch, stretch);
+			margin: 35px auto 0;
+		}
+
+		&__column_marg-top {
+			margin-top: 35px;
+		}
+	}
+	.create {
+		&__another {
+			@include flex(flex, column, space-between, center, stretch);
+		}
+
+		&__button {
+			margin: 20px 0 0;
+			padding: 0 55px;
+		}
+
+		&__input {
+			width: 100%;
+			max-width: 260px;
+		}
+	}
+	.common-info {
+		&__container {
+			@include flex(flex, column, space-between, stretch, stretch);
+		}
+
+		&__row {
+			margin: 20px 0 0 0;
+			@include flex(flex, column, space-between, center, stretch);
+		}
+
+		&__column {
+			@include flex(flex, wrap, space-around, stretch, stretch);
+			max-width: 190px;
+		}
+
+		&__title {
+			@include text($montserrat, normal, #444444, bold, 14px, 17px);
+			margin: 10px 0 0 0;
+			text-align: center;
+		}
+
+		&__areto {
+			@include flex(flex, column, flex-start, center, stretch);
+
+			margin: 15px 0 22px 0;
+		}
+
+		&__designed {
+			@include text($montserrat, normal, #cccccc, bold, 10px, 12px);
+			text-align: right;
+			letter-spacing: 1px;
+			margin-bottom: 7px;
+		}
+	}
+}
+
+@media (max-width: 320px) {
+	.meet {
+		&__row {
+			margin-left: 0;
+			margin-top: 0;
+		}
+
+		&__row-first {
+			@include flex(flex, wrap, center, stretch, stretch);
+		}
+
+		&__row-second {
+			@include flex(flex, wrap, center, stretch, stretch);
+		}
+
+		&__column {
+			margin-left: 0;
+			margin-top: 16px;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.discover {
+		&__img {
+			margin-top: 35px;
+			@include flex(flex, column, space-between, stretch, stretch);
+			height: 100%;
+		}
+
+		&__img-first {
+			@include flex(flex, column, center, center, stretch);
+		}
+
+		&__img-second {
+			@include flex(flex, column, center, center, stretch);
+		}
+
+		&__img-third {
+			@include flex(flex, column, center, center, stretch);
+		}
+
+		&__img-bg-sports {
+			background-image: url(../img/small/sport/Sport-1.png);
+			@include img-bg-sports(100%, 300px, 120px);
+			@include flex(flex, row, center, center, stretch);
+		}
+
+		&__img-bg-wellness {
+			background-image: url(../img/small/sport/Sport-2.png);
+			@include img-bg-sports(100%, 300px, 120px);
+			@include flex(flex, row, center, center, stretch);
+			margin: 10px 0 0 0;
+		}
+
+		&__img-bg-extreme {
+			background-image: url(../img/small/sport/Sport-3.png);
+			@include img-bg-sports(100%, 300px, 120px);
+			@include flex(flex, row, center, center, stretch);
+			margin: 10px 0 0 0;
+		}
+
+		&__img-bg-games {
+			background-image: url(../img/small/sport/Sport-4.png);
+			@include img-bg-sports(100%, 300px, 120px);
+			@include flex(flex, row, center, center, stretch);
+			margin: 10px 0 0 0;
+		}
+
+		&__img-bg-culture {
+			background-image: url(../img/small/sport/Sport-5.png);
+			@include img-bg-sports(100%, 300px, 120px);
+			@include flex(flex, row, center, center, stretch);
+			margin: 10px 0 0 0;
+		}
+
+		&__img-bg-enjoyment {
+			background-image: url(../img/small/sport/Sport-6.png);
+			@include img-bg-sports(100%, 300px, 120px);
+			@include flex(flex, row, center, center, stretch);
+			margin: 10px 0 0 0;
+		}
+
+		&__img-bg-trevelling {
+			background-image: url(../img/small/sport/Sport-7.png);
+			@include img-bg-sports(100%, 300px, 120px);
+			@include flex(flex, row, center, center, stretch);
+			margin: 10px 0 0 0;
+		}
+	}
+}
