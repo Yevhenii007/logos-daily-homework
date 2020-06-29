@@ -6,6 +6,7 @@
 // let address: string = city;
 // console.log(address);
 
+/////////////////////////////////////////////////////////////////////////////////////////
 // // Завдання №2
 
 // let question: string = prompt("Введіть число", "2");
@@ -18,6 +19,7 @@
 // 	console.log("Число непарне.");
 // }
 
+/////////////////////////////////////////////////////////////////////////////////////////
 // // Завдання №3
 
 // function getMaxOfArray1(...numbers: number[]) {
@@ -47,6 +49,7 @@
 // }
 // getMaxOfArray3(5, 25, 8, 10, 1);
 
+/////////////////////////////////////////////////////////////////////////////////////////
 // // Завдання №4
 
 // function getSqrt(value: any) {
@@ -67,5 +70,77 @@
 
 // getSqrt(2);
 
-// // Завдання №5
+/////////////////////////////////////////////////////////////////////////////////////////
+// Завдання №5
 
+let firstElem = (x: string) => document.querySelector(x);
+let arrayElem = (x: string) => document.querySelectorAll(x);
+
+let add = arrayElem("button")[0];
+let reset = arrayElem("button")[1];
+let cenzor = arrayElem("button")[2];
+
+let arrOfWords: Array<string> = [];
+
+let badWordsSpanElem: any = arrayElem("span")[1];
+let inputElem: any = firstElem("input");
+let textareaElem: any = firstElem("textarea");
+
+add.addEventListener("click", function (): void {
+	if (!inputElem.value) {
+		inputElem.classList.add("error");
+		inputElem.placeholder = "Please write a word!";
+	} else {
+		inputElem.classList.remove("error");
+		inputElem.placeholder = "word here..";
+
+		arrOfWords.push(inputElem.value);
+		badWordsSpanElem.innerHTML = arrOfWords;
+		inputElem.value = "";
+	}
+});
+
+reset.addEventListener("click", function (): void {
+	inputElem.classList.remove("error");
+	inputElem.placeholder = "word here..";
+
+	textareaElem.classList.remove("error");
+	textareaElem.placeholder = "text here..";
+
+	arrOfWords = [];
+
+	badWordsSpanElem.innerHTML = "";
+
+	inputElem.value = "";
+	textareaElem.value = "";
+	textareaElem.classList.remove("error");
+	textareaElem.classList.remove("success");
+
+});
+
+cenzor.addEventListener("click", function (): void {
+	let text: string = textareaElem.value;
+
+	if (!textareaElem.value) {
+		textareaElem.classList.add("error");
+		textareaElem.placeholder = "Please write a text!";
+	} else {
+		textareaElem.classList.remove("error");
+		textareaElem.classList.add("success");
+		textareaElem.placeholder = "text here..";
+
+		for (let findWors of arrOfWords) {
+			let star: string = "";
+
+			let reg = new RegExp(findWors, "gi");
+
+			text = text.replace(reg, function (): string {
+				for (let i: number = 0; i < findWors.length; i++) {
+					star += "*";
+				}
+				return star;
+			});
+		}
+		textareaElem.value = text;
+	}
+});
