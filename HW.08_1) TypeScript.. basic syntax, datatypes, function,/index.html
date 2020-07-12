@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- CSS only -->
+	<link
+	rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous"
+	/>
+	<link rel="stylesheet" href="./style.css">
+
+	<title>Document</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light">
+		<h3>List of prohibited words:</h3>
+	</nav>
+
+	<div class="all">
+		<div class="container">
+
+			<div class="row">
+				<span class="col-3">
+					Bad words:
+				</span>
+				<span class="col">
+				</span>
+			</div>
+
+			<div class="form-group">
+				<div class="form-row">
+					<div class="col-8">
+						<input type="text" class="form-control" placeholder="word here.." aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+					</div>
+					<div class="col">
+						<button type="button" class="btn btn-warning">Add</button>
+					</div>
+					<div class="col">
+						<button type="button" class="btn btn-danger">Reset</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<textarea id="" placeholder="text here.." class="form-control" name="" rows="3"></textarea>
+			</div>
+
+			<div class="form-group">
+				<button type="button" class="btn btn-success col-12">Cenzor</button>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- JS, Popper.js, and jQuery -->
+	<script
+		src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"
+	></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"
+	></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"
+	></script>
+
+	<script src="./main.js"></script>
+</body>
+</html>

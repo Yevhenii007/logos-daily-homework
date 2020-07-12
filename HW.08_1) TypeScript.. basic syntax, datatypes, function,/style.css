@@ -1,0 +1,49 @@
+body > nav:nth-child(1) {
+	display: flex;
+	justify-content: center;
+}
+
+body > nav {
+	border: 1px solid silver;
+	background-color: #f0efef!important;
+	z-index: 10;
+}
+
+.all {
+	height: 70vh;
+	display: flex;
+	align-items: center;
+}
+
+.container {
+	border-radius: 5px;
+	background-color: #f0efef!important;
+	width: 570px;
+}
+
+body > div > div > div.row > span.col-3 {
+	max-width: 18%;
+	padding-right: 0;
+	font-weight: 700;
+}
+
+body > div > div > div.row > span.col {
+	padding-left: 0;
+	font-weight: 700;
+	color: #dc3545;
+}
+
+body > div > div > div.row {
+	line-height: 50px;
+}
+
+body > div > div > div:nth-child(2) > div > div.col > button {
+	width: 80px;
+}
+
+.error {
+	border: 2px solid #dc3545;
+}
+.success {
+	border: 2px solid #35dc3d;
+}
