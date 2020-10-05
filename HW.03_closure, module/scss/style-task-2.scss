@@ -1,67 +1,67 @@
 @import "./base";
 
 body {
-	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 input {
-	margin: 0px 0px 20px 0px;
-	padding: 10px 15px;
-	border-radius: 5px;
-	border-color: lightgray;
-	border-width: 1px;
-	// border-style: solid;
+  margin: 0px 0px 20px 0px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border-color: lightgray;
+  border-width: 1px;
+  // border-style: solid;
 }
 
 .main {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 
-	&__data {
-		padding: 10px 15px;
-		background-color: rgb(230, 230, 230);
-		border-radius: 5px;
-		margin-bottom: 20px;
-		border: darkgray solid 1px;
-	}
+  &__data {
+    padding: 10px 15px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: darkgray solid 1px;
+  }
 
-	&__content {
-		width: 230px;
-		padding: 30px 20px;
-		margin: 100px 20px;
-		background-color: rgb(240, 240, 240);
-		border-radius: 5px;
-		border: 1px solid darkgray;
-		box-shadow: 0 0 10px darkgray;
-	}
+  &__content {
+    width: 230px;
+    padding: 30px 20px;
+    margin: 100px 20px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+    border: 1px solid darkgray;
+    box-shadow: 0 0 10px darkgray;
+  }
 
-	&__text {
-		font-weight: bold;
-	}
+  &__text {
+    font-weight: bold;
+  }
 }
 
 .available {
 
-	&__balance {}
+  &__balance {}
 
-	&__beer {}
+  &__beer {}
 
-	&__vine {}
+  &__vine {}
 
-	&__pepsi {}
+  &__pepsi {}
 }
 
 .buying {
-	input[name=product] {
-		margin-left: 10px;
-	}
+  input[name=product] {
+    margin-left: 10px;
+  }
 
-	&__number {}
+  &__number {}
 
-	&__ordered {
-		height: 50px;
-		overflow: auto;
-	}
+  &__ordered {
+    height: 50px;
+    overflow: auto;
+  }
 }
 
 .information {}

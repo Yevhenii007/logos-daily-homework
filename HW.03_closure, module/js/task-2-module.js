@@ -1,5 +1,3 @@
-let firstElem = (x) => document.querySelector(x);
-
 let balance = 1000;
 let beerCount = 100;
 let vineCount = 50;
@@ -11,58 +9,49 @@ let pepsiPrice = 20;
 let overallPrice = 0;
 
 function zeroOverallPrice() {
-	return overallPrice = 0;
+  return overallPrice = 0;
 }
 
 function buyingOrderedBeer(count) {
-	firstElem(
-		".buying__ordered"
-	).innerHTML += `<div>Пиво: ${count} шт.</div>`;
-	beerCount -= count;
-	overallPrice += beerPrice * count;
-	balance += overallPrice;
+  beerCount -= count;
+  overallPrice += beerPrice * count;
+  balance += beerPrice * count;
 }
 function buyingOrderedVine(count) {
-	firstElem(
-		".buying__ordered"
-	).innerHTML += `<div>Вино: ${count} шт.</div>`;
-	vineCount -= count;
-	overallPrice += vinePrice * count;
-	balance += overallPrice;
+  vineCount -= count;
+  overallPrice += vinePrice * count;
+  balance += vinePrice * count;
 }
 function buyingOrderedPepsi(count) {
-	firstElem(
-		".buying__ordered"
-	).innerHTML += `<div>Пепсі: ${count} шт.</div>`;
-	pepsiCount -= count;
-	overallPrice += pepsiPrice * count;
-	balance += overallPrice;
+  pepsiCount -= count;
+  overallPrice += pepsiPrice * count;
+  balance += pepsiPrice * count;
 }
 
 function checkBalance() {
-	return balance;
+  return balance;
 }
 function checkOverallPrice() {
-	return overallPrice;
+  return overallPrice;
 }
 function checkBeer() {
-	return beerCount;
+  return beerCount;
 }
 function checkVine() {
-	return vineCount;
+  return vineCount;
 }
 function checkPepsi() {
-	return pepsiCount;
+  return pepsiCount;
 }
 
 export {
-	checkBalance,
-	checkOverallPrice,
-	checkBeer,
-	checkVine,
-	checkPepsi,
-	buyingOrderedBeer,
-	buyingOrderedVine,
-	buyingOrderedPepsi,
-	zeroOverallPrice,
+  checkBalance,
+  checkOverallPrice,
+  checkBeer,
+  checkVine,
+  checkPepsi,
+  buyingOrderedBeer,
+  buyingOrderedVine,
+  buyingOrderedPepsi,
+  zeroOverallPrice,
 };
