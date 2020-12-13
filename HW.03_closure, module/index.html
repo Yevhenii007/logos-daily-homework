@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./css/style-task-2.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="main">
+			<div class="main__content available">
+				<p class="main__text">Баланс</p>
+				<div class="main__data available__balance"></div>
+				<p class="main__text">Пиво</p>
+				<div class="main__data available__beer"></div>
+				<p class="main__text">Вино</p>
+				<div class="main__data available__vine"></div>
+				<p class="main__text">Пепсі</p>
+				<div class="main__data available__pepsi"></div>
+			</div>
+			<div class="main__content buying">
+				<p class="main__text">Кількість</p>
+				<input type="number" class="buying__number" />
+				<input type="radio" name="product" value="Beer" /> Пиво
+				<input type="radio" name="product" value="Vine" /> Вино
+				<input type="radio" name="product" value="Pepsi" /> Пепсі
+				<input type="button" value="Додати" />
+				<div class="main__data buying__ordered"></div>
+				<input type="button" value="Купити" />
+			</div>
+			<div class="main__content information"></div>
+		</div>
+
+		<!-- 3 дз гуд
+		тільки одне но, в модулі, краще не робити звязок з вюшкою, тільки логіка -->
+
+		<!-- Завдання №1 -->
+		<!-- <script src="./js/task-1.js"></script> -->
+
+		<!-- Завдання №2 -->
+		<script src="./js/task-2-main.js" type="module"></script>
+		<script src="./js/task-2-module.js" type="module"></script>
+	</body>
+</html>
