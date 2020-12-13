@@ -1,0 +1,134 @@
+@media (max-width: 600px) {
+	.share {
+		&__container {
+			background: url(../img/small/Header_small.png);
+			max-width: 890px;
+			max-height: 365px;
+			padding: 22px 0 153px 0;
+		}
+
+		&__top {
+			@include flex(flex, column-reverse, space-between, center, stretch);
+
+			max-width: 155px;
+			height: 155px;
+		}
+
+		&__logo {
+			margin-left: 0;
+		}
+
+		&__sign-up {
+			margin-right: 0;
+		}
+
+		&__title {
+			@include text($montserrat, normal, #ffffff, bold, 30px, 37px);
+			max-width: 272px;
+			margin: 25px auto 0;
+		}
+
+		&__text {
+			@include text($roboto, normal, #f7f3f2, 300, 18px, 24px);
+			max-width: 272px;
+			margin: 5px auto 0;
+		}
+
+		&__button {
+			margin-top: 15px;
+		}
+
+		&__button-a {
+			padding: 10px 45px;
+		}
+	}
+	.description {
+		&__title {
+			@include text($montserrat, normal, #444444, bold, 22px, 27px);
+			margin: 35px auto 0;
+		}
+	}
+	.how {
+		&__row {
+			margin-top: 15px;
+			@include flex(flex, column, space-between, center, stretch);
+		}
+
+		&__column-first {
+			background-image: url(../img/small/how/Step-1-small.png);
+			@include col-steps(100%, 245px, 225px, 0 30px 15px 25px);
+			margin: auto;
+		}
+
+		&__column-midle {
+			background-image: url(../img/small/how/Step-2-small.png);
+			@include col-steps(100%, 245px, 225px, 0 30px 15px 25px);
+			margin: 10px auto 0;
+		}
+
+		&__column-last {
+			background-image: url(../img/small/how/Step-3-small.png);
+			@include col-steps(100%, 245px, 225px, 0 30px 15px 25px);
+			margin: 10px auto 0;
+		}
+	}
+	.meet {
+		&__row {
+			@include flex(flex, wrap, space-between, stretch, stretch);
+			margin: 35px auto 0;
+		}
+
+		&__column_marg-top {
+			margin-top: 35px;
+		}
+	}
+	.create {
+		&__another {
+			@include flex(flex, column, space-between, center, stretch);
+		}
+
+		&__button {
+			margin: 20px 0 0;
+			padding: 0 55px;
+		}
+
+		&__input {
+			width: 100%;
+			max-width: 260px;
+		}
+	}
+	.common-info {
+		&__container {
+			@include flex(flex, column, space-between, stretch, stretch);
+		}
+
+		&__row {
+			margin: 20px 0 0 0;
+			@include flex(flex, column, space-between, center, stretch);
+		}
+
+		&__column {
+			@include flex(flex, wrap, space-around, stretch, stretch);
+			max-width: 190px;
+		}
+
+		&__title {
+			@include text($montserrat, normal, #444444, bold, 14px, 17px);
+			margin: 10px 0 0 0;
+			text-align: center;
+		}
+
+		&__areto {
+			@include flex(flex, column, flex-start, center, stretch);
+
+			margin: 15px 0 22px 0;
+		}
+
+		&__designed {
+			@include text($montserrat, normal, #cccccc, bold, 10px, 12px);
+			text-align: right;
+			letter-spacing: 1px;
+			margin-bottom: 7px;
+		}
+	}
+}

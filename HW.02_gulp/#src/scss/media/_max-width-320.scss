@@ -1,0 +1,21 @@
+@media (max-width: 320px) {
+	.meet {
+		&__row {
+			margin-left: 0;
+			margin-top: 0;
+		}
+
+		&__row-first {
+			@include flex(flex, wrap, center, stretch, stretch);
+		}
+
+		&__row-second {
+			@include flex(flex, wrap, center, stretch, stretch);
+		}
+
+		&__column {
+			margin-left: 0;
+			margin-top: 16px;
+		}
+	}
+}

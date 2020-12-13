@@ -1,0 +1,69 @@
+@media (max-width: 480px) {
+  .discover {
+    &__img {
+      margin-top: 35px;
+      @include flex(flex, column, space-between, stretch, stretch);
+      height: 100%;
+    }
+
+    &__img-first {
+      @include flex(flex, column, center, center, stretch);
+    }
+
+    &__img-second {
+      @include flex(flex, column, center, center, stretch);
+    }
+
+    &__img-third {
+      @include flex(flex, column, center, center, stretch);
+    }
+
+    &__img-bg-sports {
+      background-image: url(../img/small/sport/Sport-1.png);
+      @include img-bg-sports(100%, 300px, 120px);
+      @include flex(flex, row, center, center, stretch);
+    }
+
+    &__img-bg-wellness {
+      background-image: url(../img/small/sport/Sport-2.png);
+      @include img-bg-sports(100%, 300px, 120px);
+      @include flex(flex, row, center, center, stretch);
+      margin: 10px 0 0 0;
+    }
+
+    &__img-bg-extreme {
+      background-image: url(../img/small/sport/Sport-3.png);
+      @include img-bg-sports(100%, 300px, 120px);
+      @include flex(flex, row, center, center, stretch);
+      margin: 10px 0 0 0;
+    }
+
+    &__img-bg-games {
+      background-image: url(../img/small/sport/Sport-4.png);
+      @include img-bg-sports(100%, 300px, 120px);
+      @include flex(flex, row, center, center, stretch);
+      margin: 10px 0 0 0;
+    }
+
+    &__img-bg-culture {
+      background-image: url(../img/small/sport/Sport-5.png);
+      @include img-bg-sports(100%, 300px, 120px);
+      @include flex(flex, row, center, center, stretch);
+      margin: 10px 0 0 0;
+    }
+
+    &__img-bg-enjoyment {
+      background-image: url(../img/small/sport/Sport-6.png);
+      @include img-bg-sports(100%, 300px, 120px);
+      @include flex(flex, row, center, center, stretch);
+      margin: 10px 0 0 0;
+    }
+
+    &__img-bg-trevelling {
+      background-image: url(../img/small/sport/Sport-7.png);
+      @include img-bg-sports(100%, 300px, 120px);
+      @include flex(flex, row, center, center, stretch);
+      margin: 10px 0 0 0;
+    }
+  }
+}
