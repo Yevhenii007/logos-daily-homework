@@ -1,0 +1,39 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+  text-align: center;
+}
+.content {
+  margin-top: 15px;
+  display: inline-flex;
+  flex-flow: wrap;
+}
+.form-element {
+  margin: 0 5px;
+  width: 500px;
+}
+.card {
+  width: 240px;
+  margin: 0px 18.7px 15px;
+}
+.card-img-top {
+  box-shadow: 0 0 10px black; height: 350px
+}
+h5 {
+  min-height: 60px;
+  background-color: lightgrey;
+}
+
+
+.align-items-center {
+  text-align: center;
+}
+
+.elem_hide {
+	opacity: 0;
+}
+.elem_visible {
+  transition: 1s opacity ease-in-out;
+  opacity: 1;
+}
