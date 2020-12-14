@@ -1,91 +1,111 @@
-let firstElem = (x) => document.querySelector(x);
-let arrayElem = (x) => document.querySelectorAll(x);
-let addUserBtn = firstElem("input[value='Add user']");
-let editUserBtn = firstElem("input[value='Edit user']");
-let logVal = arrayElem("input[class='form-control'")[0];
-let passVal = arrayElem("input[class='form-control'")[1];
-let emVal = arrayElem("input[class='form-control'")[2];
-let tbody = firstElem("tbody");
+let addUserBtn = document.querySelector("input[value='Add user']");
+let saveEditedUserBtn = document.querySelector("input[value='Save edited user']");
+let loginInputValue = document.querySelectorAll("input[class='form-control'")[0];
+let passwordInputValue = document.querySelectorAll("input[class='form-control'")[1];
+let emailInputValue = document.querySelectorAll("input[class='form-control'")[2];
+let editUserBtn;
+let deleteUserBtn;
+let tbody = document.querySelector("tbody");
 let arrayUsers = [];
 let userIndex;
-function addUser(log, pass, em) {
-    if (logVal.value && passVal.value && emVal.value) {
-        let obj = { login: log, password: pass, email: em };
-        arrayUsers.push(obj);
-        logVal.value = '';
-        passVal.value = '';
-        emVal.value = '';
-        render();
-    }
-    else {
-        alert('Please enter more data.');
-    }
-}
-function render() {
-    tbody.innerHTML = '';
-    for (let i = 0; i <= arrayUsers.length; i++) {
-        tbody.innerHTML += `
-    <tr>
-      <th scope="row">${i + 1}</th>
-      <td>${arrayUsers[i].login}</td>
-      <td>${arrayUsers[i].password}</td>
-      <td>${arrayUsers[i].email}</td>
-      <td>
-        <input name="${i}" type="button" class="btn btn-warning" value="Edit"/>
-      </td>
-      <td>
-        <input name="${i}" type="button" class="btn btn-danger" value="Delete"/>
-      </td>
-    </tr>`;
-    }
-}
+let lastAssignedIndex = 0;
 class Obj {
-    constructor(login, password, email) {
+    constructor(id, login, password, email) {
+        this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
     }
     generateObj() {
-        return { login: this.login, password: this.password, email: this.email };
+        return { ...this };
     }
-}
-function saveEditUser() {
-    let res = new Obj(logVal.value, passVal.value, emVal.value);
-    arrayUsers.splice(userIndex, 1, res.generateObj());
-    logVal.value = '';
-    passVal.value = '';
-    emVal.value = '';
-    addUserBtn.classList.remove("d-none");
-    editUserBtn.classList.add("d-none");
-    render();
 }
 addUserBtn.addEventListener("click", function () {
-    addUser(logVal.value, passVal.value, emVal.value);
+    addUserFunction(loginInputValue.value, passwordInputValue.value, emailInputValue.value);
 });
-editUserBtn.addEventListener("click", function () {
-    saveEditUser();
+saveEditedUserBtn.addEventListener("click", function () {
+    saveEditedUserFunction();
 });
-tbody.addEventListener("click", function (e) {
-    deleteUser(e);
-    editUser(e);
-});
-function deleteUser(e) {
-    if (e.target.matches("input[value='Delete']")) {
-        let nodes = [].slice.call(document.querySelectorAll("input[value='Delete']"));
-        let res = nodes.indexOf(e.target);
-        arrayUsers.splice(res, 1);
-        render();
+function renderElementWithClickHandlers() {
+    render();
+    editUserBtn = document.querySelectorAll("input[value='Edit']");
+    deleteUserBtn = document.querySelectorAll("input[value='Delete']");
+    for (let index = 0; index < arrayUsers.length; index++) {
+        editUserBtn[index].addEventListener("click", function (e) {
+            editUserFunction(e.target.closest("tr").id);
+        });
+        deleteUserBtn[index].addEventListener("click", function (e) {
+            deleteUserFunction(e.target.closest("tr").id);
+            if (arrayUsers.length === 0) {
+                loginInputValue.value = '';
+                passwordInputValue.value = '';
+                emailInputValue.value = '';
+                addUserBtn.classList.remove("d-none");
+                saveEditedUserBtn.classList.add("d-none");
+            }
+        });
     }
 }
-function editUser(e) {
-    if (e.target.matches("input[value='Edit']")) {
-        let nodes = [].slice.call(document.querySelectorAll("input[value='Edit']"));
-        let res = nodes.indexOf(e.target);
-        logVal.value = arrayUsers[res].login;
-        passVal.value = arrayUsers[res].password;
-        emVal.value = arrayUsers[res].email;
-        userIndex = res;
-        addUserBtn.classList.add("d-none");
-        editUserBtn.classList.remove("d-none");
+function addUserFunction(log, pass, em) {
+    if (loginInputValue.value && passwordInputValue.value && emailInputValue.value) {
+        let obj = { id: lastAssignedIndex, login: log, password: pass, email: em };
+        lastAssignedIndex++;
+        arrayUsers.push(obj);
+        loginInputValue.value = '';
+        passwordInputValue.value = '';
+        emailInputValue.value = '';
+        renderElementWithClickHandlers();
+    }
+    else {
+        alert('Please enter more data.');
+    }
+}
+function saveEditedUserFunction() {
+    let res = new Obj(arrayUsers[userIndex].id, loginInputValue.value, passwordInputValue.value, emailInputValue.value);
+    arrayUsers.splice(userIndex, 1, res.generateObj());
+    loginInputValue.value = '';
+    passwordInputValue.value = '';
+    emailInputValue.value = '';
+    addUserBtn.classList.remove("d-none");
+    saveEditedUserBtn.classList.add("d-none");
+    renderElementWithClickHandlers();
+}
+function editUserFunction(id) {
+    userIndex = getElementIndexById(Number(id));
+    loginInputValue.value = arrayUsers[userIndex].login;
+    passwordInputValue.value = arrayUsers[userIndex].password;
+    emailInputValue.value = arrayUsers[userIndex].email;
+    addUserBtn.classList.add("d-none");
+    saveEditedUserBtn.classList.remove("d-none");
+}
+function deleteUserFunction(id) {
+    let elemIndex = getElementIndexById(Number(id));
+    arrayUsers.splice(elemIndex, 1);
+    renderElementWithClickHandlers();
+}
+function getElementIndexById(id) {
+    for (let index = 0; index < arrayUsers.length; index++) {
+        if (arrayUsers[index].id === id) {
+            return index;
+        }
+    }
+    throw new Error(`NO ELEMENT BY ID ${id} FOUND`);
+}
+function render() {
+    tbody.innerHTML = '';
+    for (let i = 0; i < arrayUsers.length; i++) {
+        tbody.innerHTML += `
+    <tr id="${arrayUsers[i].id}">
+      <th scope="row">${i + 1}</th>
+      <td>${arrayUsers[i].login}</td>
+      <td>${arrayUsers[i].password}</td>
+      <td>${arrayUsers[i].email}</td>
+      <td>
+        <input type="button" class="btn btn-warning" value="Edit"/>
+      </td>
+      <td>
+        <input type="button" class="btn btn-danger" value="Delete"/>
+      </td>
+    </tr>`;
     }
 }
