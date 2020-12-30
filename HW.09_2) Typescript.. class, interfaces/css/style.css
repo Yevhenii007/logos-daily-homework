@@ -1,3 +1,15 @@
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid silver;
+  background-color: #f0efef42 !important;
+  z-index: 10;
+}
+
 .container {
   margin-top: 50px;
 }
