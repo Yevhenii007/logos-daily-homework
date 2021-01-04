@@ -1,0 +1,45 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Task</th>
+        <th>Check</th>
+        <th>Done / In progress</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let objTask of arrayObjTasksFromParent; let i = index;" [id]="objTask.id">
+        <th>{{ i + 1 }}</th>
+        <td>{{ objTask.task }}</td>
+        <td> <input type="checkbox" name="" id="" (click)="changeStatus(objTask)"></td>
+        <td>
+          <span *ngIf="objTask.status" [ngClass]="objTask.status ? 'text-success' : 'text-danger'">Done</span>
+          <span *ngIf="!objTask.status" [ngClass]="objTask.status ? 'text-success' : 'text-danger'">In progress</span>
+        </td>
+        <td>
+          <input type="button" value="Edit" class="btn btn-warning" (click)="editTask(objTask)">
+        </td>
+        <td>
+          <input type="button" value="Delete" class="btn btn-danger" [disabled]="!objTask.status"
+            (click)="deleteTask(objTask)">
+        </td>
+      </tr>
+      <tr *ngIf="!editedObjStatus">
+        <th></th>
+        <td></td>
+        <td></td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="editedObjTask" name="editedObjTask"
+            value="editedObjTask">
+        </td>
+        <td>
+          <input type="button" value="save" class="btn btn-success" (click)="saveTask()">
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

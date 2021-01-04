@@ -1,2 +1,20 @@
 <!-- <app-hw11></app-hw11> -->
-<app-hw12></app-hw12>
+<!-- <app-hw12></app-hw12> -->
+
+<div class="container">
+  <h2>Plan your day!</h2>
+  <h3>User: Ivan Ivanov. Count of Tasks {{ arrayObjTasks.length }}</h3>
+  <hr>
+  <form>
+    <div class="form-row">
+      <div class="col">
+        <input type="text" class="form-control" [(ngModel)]="task" name="task">
+      </div>
+      <div class="col-2">
+        <input type="button" value="Add" class="col btn btn-success" (click)="addTask()">
+      </div>
+    </div>
+  </form>
+  <br>
+</div>
+<app-hw13 [arrayObjTasksFromParent]="arrayObjTasks"></app-hw13>
