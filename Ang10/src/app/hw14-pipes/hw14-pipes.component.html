@@ -1,0 +1,86 @@
+<ng-template #template>
+  <div class="modal-header">
+    <h5 class="modal-title pull-left">Add contact</h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <input type="text" class="form-control" placeholder="first name goes here" [(ngModel)]="firstNameInput"
+      name="firstNameInput">
+    <br>
+    <input type="text" class="form-control" placeholder="last name goes here" [(ngModel)]="lastNameInput"
+      name="lastNameInput">
+    <br>
+    <input type="text" class="form-control" placeholder="number phone goes here" [(ngModel)]="phoneNumberInput"
+      name="phoneNumberInput">
+    <br>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  </div>
+</ng-template>
+
+<div class="container">
+  <h2 style="color: #dc3545!important;">My contacts book!</h2>
+  <hr>
+  <form>
+    <div class="form-row">
+      <div class="col">
+        <input placeholder="to search for a contact, enter the text here.." type="text" class="form-control"
+          [(ngModel)]="search" name="search">
+      </div>
+      <div class="col-2">
+        <input type="button" value="add contact" class="col btn btn-success" (click)="openModal(template)">
+      </div>
+    </div>
+  </form>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="cursor: pointer;" (click)="firstNameFunc()">
+          First name
+          <i [class]="arrowFirstNameDirection"></i>
+        </th>
+        <th style="cursor: pointer;" (click)="lastNameFunc()">
+          Last name
+          <i [class]="arrowLastNameDirection"></i>
+        </th>
+        <th style="cursor: pointer;" (click)="phoneNumberFunc()">
+          Number
+          <i [class]="arrowPhoneNumberDirection"></i>
+        </th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let objContact of arrayObjContact | searchContact:search; index as i;" [id]="objContact.id">
+        <td>{{ objContact.firstName }}</td>
+        <td>{{ objContact.lastName }}</td>
+        <td>{{ objContact.phoneNumber }}</td>
+        <td>
+          <input type="button" value="Edit" class="btn btn-warning" (click)="editTask(objContact)"
+            (click)="openModal(template)">
+        </td>
+        <td>
+          <input type="button" value="Delete" class="btn btn-danger" (click)="deleteTask(objContact)">
+        </td>
+      </tr>
+      <!-- <tr *ngIf="!editedObjStatus">
+        <th></th>
+        <td></td>
+        <td></td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="editedobjContact" name="editedobjContact"
+            value="editedobjContact">
+        </td>
+        <td>
+          <input type="button" value="save" class="btn btn-success" (click)="saveTask()">
+        </td>
+        <td></td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
