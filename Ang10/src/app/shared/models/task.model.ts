@@ -1,4 +1,4 @@
-import { ITask } from './task.interface';
+import { ITask } from '../interfaces/task.interface';
 
 export class Task implements ITask {
   constructor(

@@ -1,24 +1,53 @@
-import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Subscription } from 'rxjs';
 
-import { IContact } from './contact.interface';
-import { Contact } from './contact.model';
-
+import { IContact } from '../../../shared/interfaces/contact.interface';
+import { Contact } from '../../../shared/models/contact.model';
 
 @Component({
-  selector: 'app-hw14-pipes',
-  templateUrl: './hw14-pipes.component.html',
-  styleUrls: ['./hw14-pipes.component.scss']
+  selector: 'app-contactlist',
+  templateUrl: './contactlist.component.html',
+  styleUrls: ['./contactlist.component.scss']
 })
-export class Hw14PipesComponent implements OnInit {
+export class ContactlistComponent implements OnInit {
 
   public firstNameInput: string;
   public lastNameInput: string;
   public phoneNumberInput: string;
 
-  public arrayObjContact: Array<IContact> = [];
+  public arrayObjContact: Array<IContact> = [
+    {
+      id: 1,
+      firstName: 'Petro',
+      lastName: 'Ivanov',
+      phoneNumber: '0504853279'
+    },
+    {
+      id: 2,
+      firstName: 'Valeria',
+      lastName: 'Hlibova',
+      phoneNumber: '0997951872'
+    },
+    {
+      id: 3,
+      firstName: 'Artem',
+      lastName: 'Bohdan',
+      phoneNumber: '066087145287'
+    },
+    {
+      id: 4,
+      firstName: 'Vasyl',
+      lastName: 'Kohan',
+      phoneNumber: '0509681452384'
+    },
+    {
+      id: 5,
+      firstName: 'Alina',
+      lastName: 'Petrova',
+      phoneNumber: '0974652879361'
+    },
+  ];
   public search: string;
   public editedObjId: number;
 

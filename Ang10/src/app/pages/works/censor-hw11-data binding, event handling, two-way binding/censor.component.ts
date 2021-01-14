@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-hw11',
-  templateUrl: './hw11.component.html',
-  styleUrls: ['./hw11.component.scss']
+  selector: 'app-censor',
+  templateUrl: './censor.component.html',
+  styleUrls: ['./censor.component.scss']
 })
-export class Hw11Component implements OnInit {
+export class CensorComponent implements OnInit {
 
   word: string;
   text: string;
   arrAllWords: Array<string> = [];
   allWords: string;
 
-  classWord: string;
-  classText: string;
+  classWord = 'form-control';
+  classText = 'form-control';
   myPlaceholderWord = 'word here..';
   myPlaceholderText = 'text here..';
 
@@ -24,11 +24,11 @@ export class Hw11Component implements OnInit {
 
   addingWord(): void {
     if (!this.word) {
-      this.classWord = 'error';
+      this.classWord = 'form-control error';
       this.myPlaceholderWord = 'Please write a word!';
     }
     else {
-      this.classWord = '';
+      this.classWord = 'form-control ';
       this.myPlaceholderWord = 'word here..';
 
       this.arrAllWords.push(this.word);
@@ -38,10 +38,10 @@ export class Hw11Component implements OnInit {
   }
 
   resetAll(): void {
-    this.classWord = '';
+    this.classWord = 'form-control ';
     this.myPlaceholderWord = 'word here..';
 
-    this.classText = '';
+    this.classText = 'form-control';
     this.myPlaceholderText = 'text here..';
 
     this.arrAllWords = [];
@@ -54,11 +54,11 @@ export class Hw11Component implements OnInit {
 
   cenzor(): void {
     if (!this.text) {
-      this.classText = 'error';
+      this.classText = 'form-control error';
       this.myPlaceholderText = 'Please write a text!';
     }
     else {
-      this.classText = 'success';
+      this.classText = 'form-control success';
       this.myPlaceholderText = 'text here..';
 
 
@@ -67,10 +67,8 @@ export class Hw11Component implements OnInit {
 
         const reg = new RegExp(findWors, 'gi');
 
-        // tslint:disable-next-line:only-arrow-functions
-        this.text = this.text.replace(reg, function(): string {
-          // tslint:disable-next-line:prefer-for-of
-          for (let i = 0; i < findWors.length; i++) {
+        this.text = this.text.replace(reg, () => {
+          for (const word of findWors) {
             star += '*';
           }
           return star;

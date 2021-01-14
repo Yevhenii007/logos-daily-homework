@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 ////// * hw.13 array to child ///////////////
-// import { ITask } from './hw13/task.interface';
-// import { Task } from './hw13/task.model';
+// import { ITask } from './hw13-@Input(), @Output(), connect parent comp with child comp/task.interface';
+// import { Task } from './hw13-@Input(), @Output(), connect parent comp with child comp/task.model';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,23 @@ export class AppComponent {
   title = 'Ang10';
 
   ////// * hw.13 array to child ///////////////
-  // public arrayObjTasks: Array<ITask> = [];
+  // public arrayObjTasks: Array<ITask> = [
+  //   {
+  //     id: 1,
+  //     task: 'HTML',
+  //     status: true
+  //   },
+  //   {
+  //     id: 2,
+  //     task: 'Angular',
+  //     status: false
+  //   },
+  //   {
+  //     id: 3,
+  //     task: 'Javascript',
+  //     status: false
+  //   }
+  // ];
   // public task: string;
   // public existingOfObjWithSuchTask = false;
   // getNewElemId(): number {

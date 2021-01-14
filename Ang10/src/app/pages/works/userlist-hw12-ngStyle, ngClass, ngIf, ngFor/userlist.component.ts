@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-hw12',
-  templateUrl: './hw12.component.html',
-  styleUrls: ['./hw12.component.scss']
+  selector: 'app-userlist',
+  templateUrl: './userlist.component.html',
+  styleUrls: ['./userlist.component.scss']
 })
-export class Hw12Component implements OnInit {
+export class UserlistComponent implements OnInit {
 
   loginValue: string;
   passwordValue: string;

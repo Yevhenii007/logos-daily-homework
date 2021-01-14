@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IContact } from './contact.interface';
+import { IContact } from '../interfaces/contact.interface';
 
 @Pipe({
   name: 'searchContact'
@@ -20,14 +20,6 @@ export class SearchContactPipe implements PipeTransform {
     const foundedContactByPhoneNumber =
       arrayObjContacts.filter(item => item.phoneNumber.toLowerCase().includes(contact.toLowerCase()));
 
-    // const arr = [];
-
-    // if (
-    //   foundedContactByFirstName.length !== 0 ||
-    //   foundedContactByLastName.length !== 0
-    // ) {
-    //   return arr.concat(foundedContactByFirstName, foundedContactByLastName);
-    // }
     if (foundedContactByFirstName.length !== 0) {
       return foundedContactByFirstName;
     }

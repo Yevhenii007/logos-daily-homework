@@ -1,4 +1,18 @@
+
 <div class="container">
+  <h3>Count of tasks: {{ arrayObjTasks.length }}</h3>
+  <hr>
+  <form>
+    <div class="form-row">
+      <div class="col">
+        <input type="text" class="form-control" [(ngModel)]="task" name="task">
+      </div>
+      <div class="col-2">
+        <input type="button" value="Add" class="col btn btn-success" (click)="addTask()">
+      </div>
+    </div>
+  </form>
+  <br>
   <table class="table">
     <thead>
       <tr>
@@ -11,10 +25,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let objTask of arrayObjTasksFromParent; let i = index;" [id]="objTask.id">
+      <tr *ngFor="let objTask of arrayObjTasks; let i = index;" [id]="objTask.id">
         <th>{{ i + 1 }}</th>
         <td>{{ objTask.task }}</td>
-        <td> <input type="checkbox" name="" id="" (click)="changeStatus(objTask)"></td>
+        <td> <input type="checkbox" name="" id="" (click)="changeStatus(objTask)" [checked]="objTask.status ? 'checked' : '' "></td>
         <td>
           <span *ngIf="objTask.status" [ngClass]="objTask.status ? 'text-success' : 'text-danger'">Done</span>
           <span *ngIf="!objTask.status" [ngClass]="objTask.status ? 'text-success' : 'text-danger'">In progress</span>

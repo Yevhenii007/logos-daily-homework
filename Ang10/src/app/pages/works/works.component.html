@@ -1,0 +1,21 @@
+<ul class="nav nav-tabs">
+  <li class="d-flex align-items-center" style="margin: 0px 10px 0px; position: relative;">
+    Last works >>>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="[ '/works/cenzor' ]" routerLinkActive="active">Cenzor</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="[ '/works/userlist' ]" routerLinkActive="active">Users</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="[ '/works/tasklist' ]" routerLinkActive="active">Tasks</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="[ '/works/contactlist' ]" routerLinkActive="active">Contacts</a>
+  </li>
+  <li class="nav-item" style="position: absolute; right: 10px;">
+    <a class="nav-link text-danger" [routerLink]="[ '/home' ]" routerLinkActive="active">Back to >>> Home</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>
