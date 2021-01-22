@@ -18,12 +18,6 @@ export class ContactlistComponent implements OnInit {
 
   public arrayObjContact: Array<IContact> = [
     {
-      id: 1,
-      firstName: 'Petro',
-      lastName: 'Ivanov',
-      phoneNumber: '0504853279'
-    },
-    {
       id: 2,
       firstName: 'Valeria',
       lastName: 'Hlibova',

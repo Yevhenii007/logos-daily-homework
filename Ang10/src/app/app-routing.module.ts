@@ -7,6 +7,7 @@ import { UserlistComponent } from './pages/works/userlist-hw12-ngStyle, ngClass,
 import { TasklistComponent } from './pages/works/tasklist-hw13-@Input(), @Output(), connect parent comp with child comp/tasklist.component';
 import { ContactlistComponent } from './pages/works/contactlist-hw14-pipes/contactlist.component';
 import { WorksComponent } from './pages/works/works.component';
+import { BlogComponent } from './pages/works/blog-hw16-services/blog.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'userlist', component: UserlistComponent },
       { path: 'tasklist', component: TasklistComponent },
       { path: 'contactlist', component: ContactlistComponent },
+      { path: 'blog', component: BlogComponent },
     ]
   },
 

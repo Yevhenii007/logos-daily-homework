@@ -6,12 +6,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Hw11Component } from './hw11-data binding, event handling, two-way binding/hw11.component';
-import { Hw12Component } from './hw12-ngStyle, ngClass, ngIf, ngFor/hw12.component';
-import { Hw13Component } from './hw13-@Input(), @Output(), connect parent comp with child comp/hw13.component';
-import { Hw14PipesComponent } from './hw14-pipes/hw14-pipes.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SearchContactPipe } from './hw14-pipes/search-contact.pipe';
+import { SearchContactPipe } from './shared/pipes/search-contact.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -20,14 +16,11 @@ import { UserlistComponent } from './pages/works/userlist-hw12-ngStyle, ngClass,
 import { TasklistComponent } from './pages/works/tasklist-hw13-@Input(), @Output(), connect parent comp with child comp/tasklist.component';
 import { ContactlistComponent } from './pages/works/contactlist-hw14-pipes/contactlist.component';
 import { WorksComponent } from './pages/works/works.component';
+import { BlogComponent } from './pages/works/blog-hw16-services/blog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Hw11Component,
-    Hw12Component,
-    Hw13Component,
-    Hw14PipesComponent,
     SearchContactPipe,
     HeaderComponent,
     FooterComponent,
@@ -37,6 +30,7 @@ import { WorksComponent } from './pages/works/works.component';
     TasklistComponent,
     ContactlistComponent,
     WorksComponent,
+    BlogComponent,
   ],
   imports: [
     BrowserModule,

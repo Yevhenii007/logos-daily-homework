@@ -1,0 +1,88 @@
+<nav class="navbar navbar-dark bg-dark text-white mb-2">
+  <div class="container-fluid">
+    <a class="navbar-brand">Angular Blog</a>
+
+    <form class="btn-group" *ngIf="!currentUser">
+      <button class="btn btn-outline-success" type="button" (click)="showModalFunction('Sign In', template)">
+        Sign In
+      </button>
+      <button class="btn btn-outline-primary" type="button" (click)="showModalFunction('Sign Up', template)">
+        Sign Up
+      </button>
+    </form>
+
+    <form class="btn-group" *ngIf="currentUser">
+      <button type="button" class="btn btn-outline-success" (click)="showModalFunction('Add post', template)">
+        Add post
+      </button>
+      <span class="btn bg-warning text-dark font-weight-normal">{{currentUser}}</span>
+      <button type="button" class="btn btn-outline-warning" (click)="signOutBtn()">
+        Sign Out
+      </button>
+    </form>
+
+  </div>
+</nav>
+<div class="container">
+  <div class="card mb-2" *ngFor="let blog of localArrayBlogs; let i=index">
+    <div class="card-body">
+      <h5 class="card-title">{{blog.topic}}</h5>
+      <div class="card-subtitle d-flex text-muted justify-content-between">
+        <h6 class="">
+          Posted by: {{blog.postedBy}}
+        </h6>
+        <div class="small">
+          <i class="fa fa-clock"></i>
+          {{blog.date | date:'HH:mm, dd.MM.yyyy'}}
+        </div>
+      </div>
+      <p class="card-text">
+        {{blog.message}}
+      </p>
+      <form class="d-flex btn-group justify-content-end" *ngIf="userCheck(blog.postedBy)">
+        <button class="btn btn-sm btn-warning" type="button" (click)="showModalFunction('Edit post', template, blog)">Edit</button>
+        <button class="btn btn-sm btn-danger" type="button" (click)="deletePost(blog)">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h5 class="modal-title pull-left">{{btnValueForModalTitle}}</h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form *ngIf="signInStatus || signUpStatus">
+      <div class="mb-3" *ngIf="signUpStatus">
+        <label for="inputUsername1" class="form-label">Username:</label>
+        <input type="text" class="form-control" id="inputUsername1" [(ngModel)]="userNameInput" name="UsernameInput">
+      </div>
+      <div class="mb-3">
+        <label for="inputEmail1" class="form-label">Email:</label>
+        <input type="email" class="form-control " id="inputEmail1" [(ngModel)]="emailInput" name="emailInput" required>
+      </div>
+      <div class="mb-3">
+        <label for="inputPassword1" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="inputPassword1" [(ngModel)]="passwordInput" name="passwordInput">
+      </div>
+    </form>
+    <form *ngIf="addPostStatus || editPostStatus">
+      <div class="mb-3">
+        <label for="inputUsername1" class="form-label">Title:</label>
+        <input type="text" class="form-control" id="inputUsername1" [(ngModel)]="titleInput" name="titleInput">
+      </div>
+      <div class="mb-3">
+        <label for="textarea1" class="form-label">Text:</label>
+        <textarea class="form-control" id="textarea1" rows="3" [(ngModel)]="textarea" name="textarea"></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    <button type="button" [class]="signInStatus ? 'btn btn-success' : 'btn btn-primary'" *ngIf="signInStatus || signUpStatus" (click)="signInSignUpSubmit()">Submit</button>
+    <button type="button" class="btn btn-success" *ngIf="editPostStatus || addPostStatus" (click)="addEditPostSubmit()" [textContent]="editStatus ? 'Edit post' : 'Add post'"></button>
+  </div>
+</ng-template>
