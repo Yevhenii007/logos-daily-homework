@@ -1,0 +1,16 @@
+<div class="container-fluid mt-2">
+  <div class="d-flex align-items-start">
+    <div class="col-2">
+      <div class="nav flex-column nav-pills me-3">
+        <a class="nav-link" routerLink="/works/site/site-admin/site-admin-category" routerLinkActive="active">Category</a>
+        <a class="nav-link" routerLink="/works/site/site-admin/site-admin-products" routerLinkActive="active">Products</a>
+        <a class="nav-link" routerLink="/works/site/site-admin/site-admin-blogs" routerLinkActive="active">Blogs</a>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="tab-content">
+        <router-outlet ></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

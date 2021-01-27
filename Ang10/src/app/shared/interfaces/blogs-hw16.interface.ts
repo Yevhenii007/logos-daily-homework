@@ -4,4 +4,5 @@ export interface IBlogs {
   topic: string;
   date: object;
   message: string;
+  image?: string;
 }

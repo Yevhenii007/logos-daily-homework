@@ -1,0 +1,44 @@
+<form>
+  <div class="mb-3">
+    <label for="title" class="form-label" hidden>Title</label>
+    <input type="text" placeholder="title here.." class="form-control" id="title" [(ngModel)]="blogTitle" name="blogTitle">
+  </div>
+  <div class="mb-3">
+    <label for="text" class="form-label" hidden>Text</label>
+    <textarea class="form-control" style="height: 100px;" placeholder="text here.." id="text" [(ngModel)]="blogText" name="blogText"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="author" class="form-label" hidden>Author</label>
+    <input type="text" placeholder="author here.." class="form-control" id="author" [(ngModel)]="blogAuthor" name="blogAuthor">
+  </div>
+  <button type="button" [class]="!editStatus ? 'btn btn-dark' : 'btn btn-light border-dark'" [innerText]="!editStatus ? 'Add' : 'Save edit'" (click)="addBlog()"></button>
+</form>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Date</th>
+      <th>Author</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let blog of arrayBlogs; let i=index">
+      <th>{{ i+1 }}</th>
+      <td>{{ blog.topic }}</td>
+      <td>{{ blog.message }}</td>
+      <td>{{ blog.date | date:'MMM d, yyyy' }}</td>
+      <td>{{ blog.postedBy }}</td>
+      <td>
+        <input type="button" class="btn btn-dark" value="Edit" (click)="editBlog(blog)">
+      </td>
+      <td>
+        <input type="button" class="btn btn-dark" value="Delete" (click)="deleteBlog(blog)">
+      </td>
+    </tr>
+  </tbody>
+</table>

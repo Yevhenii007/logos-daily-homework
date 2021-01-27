@@ -215,14 +215,14 @@ export class BlogComponent implements OnInit {
   signOutBtn(): void {
     this.currentUser = '';
   }
-  userCheck(blogPostedBy: string): boolean {
-    if (
-      this.currentUser === blogPostedBy ||
-      this.currentUser === 'admin'
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // userCheck(blogPostedBy: string): boolean {
+  //   if (
+  //     this.currentUser === blogPostedBy ||
+  //     this.currentUser === 'admin'
+  //   ) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 }

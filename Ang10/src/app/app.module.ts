@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,17 @@ import { TasklistComponent } from './pages/works/tasklist-hw13-@Input(), @Output
 import { ContactlistComponent } from './pages/works/contactlist-hw14-pipes/contactlist.component';
 import { WorksComponent } from './pages/works/works.component';
 import { BlogComponent } from './pages/works/blog-hw16-services/blog.component';
+import { SiteComponent } from './pages/works/site-hw17-24/site.component';
+import { SiteHeaderComponent } from './pages/works/site-hw17-24/components/site-header/site-header.component';
+import { SiteFooterComponent } from './pages/works/site-hw17-24/components/site-footer/site-footer.component';
+import { SiteHomeComponent } from './pages/works/site-hw17-24/pages/site-home/site-home.component';
+import { SiteProductsComponent } from './pages/works/site-hw17-24/pages/site-products/site-products.component';
+import { SiteBlogComponent } from './pages/works/site-hw17-24/pages/site-blog/site-blog.component';
+import { SiteAboutComponent } from './pages/works/site-hw17-24/pages/site-about/site-about.component';
+import { SiteAdminComponent } from './pages/works/site-hw17-24/admin/site-admin.component';
+import { SiteAdminCategoryComponent } from './pages/works/site-hw17-24/admin/site-admin-category/site-admin-category.component';
+import { SiteAdminBlogsComponent } from './pages/works/site-hw17-24/admin/site-admin-blogs/site-admin-blogs.component';
+import { SiteAdminProductsComponent } from './pages/works/site-hw17-24/admin/site-admin-products/site-admin-products.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +43,17 @@ import { BlogComponent } from './pages/works/blog-hw16-services/blog.component';
     ContactlistComponent,
     WorksComponent,
     BlogComponent,
+    SiteComponent,
+    SiteHeaderComponent,
+    SiteFooterComponent,
+    SiteHomeComponent,
+    SiteProductsComponent,
+    SiteBlogComponent,
+    SiteAboutComponent,
+    SiteAdminComponent,
+    SiteAdminCategoryComponent,
+    SiteAdminBlogsComponent,
+    SiteAdminProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +61,8 @@ import { BlogComponent } from './pages/works/blog-hw16-services/blog.component';
     FormsModule,
     BrowserAnimationsModule,
     ModalModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

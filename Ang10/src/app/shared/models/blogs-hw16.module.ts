@@ -7,6 +7,7 @@ export class Blogs implements IBlogs {
     public topic: string,
     public date: object,
     public message: string,
+    public image?: string,
   ) {
 
   }

@@ -1,0 +1,10 @@
+<div class="d-flex p-2 justify-content-between flex-wrap">
+  <div class="card m-2" style="width: 420px;" *ngFor="let blog of arrayBlogs; let i=index">
+    <img [src]="blog.image" class="card-img-top" alt="pizza img">
+    <div class="card-body">
+      <p class="text-primary small">{{ blog.date | date:'MMM d, yyyy ' | uppercase }} {{ blog.postedBy | uppercase }} </p>
+      <h5 class="card-title">{{ blog.topic }}</h5>
+      <p class="card-text">{{ blog.message }}</p>
+    </div>
+  </div>
+</div>
