@@ -3,7 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Subscription } from 'rxjs';
 
 import { IContact } from '../../../shared/interfaces/contact.interface';
-import { Contact } from '../../../shared/models/contact.model';
+import { Contact } from '../../../shared/models/contact.module';
 
 @Component({
   selector: 'app-contactlist',

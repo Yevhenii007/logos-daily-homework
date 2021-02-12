@@ -29,6 +29,18 @@ import { SiteAdminComponent } from './pages/works/site-hw17-24/admin/site-admin.
 import { SiteAdminCategoryComponent } from './pages/works/site-hw17-24/admin/site-admin-category/site-admin-category.component';
 import { SiteAdminBlogsComponent } from './pages/works/site-hw17-24/admin/site-admin-blogs/site-admin-blogs.component';
 import { SiteAdminProductsComponent } from './pages/works/site-hw17-24/admin/site-admin-products/site-admin-products.component';
+import { SearchCategoryHw18Pipe } from './shared/pipes/search-category-hw18.pipe';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
+import { SearchProductHw19Pipe } from './shared/pipes/search-product-hw19.pipe';
+
+import { OrderModule } from 'ngx-order-pipe';
+import { PipeSearchByModule } from 'ngx-pipe-search-by';
+import { SiteAdminDiscountComponent } from './pages/works/site-hw17-24/admin/site-admin-discount/site-admin-discount.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +66,9 @@ import { SiteAdminProductsComponent } from './pages/works/site-hw17-24/admin/sit
     SiteAdminCategoryComponent,
     SiteAdminBlogsComponent,
     SiteAdminProductsComponent,
+    SearchCategoryHw18Pipe,
+    SearchProductHw19Pipe,
+    SiteAdminDiscountComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +77,13 @@ import { SiteAdminProductsComponent } from './pages/works/site-hw17-24/admin/sit
     BrowserAnimationsModule,
     ModalModule.forRoot(),
     TabsModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    OrderModule,
+    PipeSearchByModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,140 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    Discount
+    <button class="btn btn-dark col-2" type="button" (click)="lgModal.show()">Add</button>
+  </div>
+  <div class="card-body">
+    <input class="form-control" type="text" placeholder="filter discount.." [(ngModel)]="searchWord" name="searchWord">
+
+    <hr style="border: 0px;">
+
+    <table class="table table-bordered table-sm small">
+      <tbody>
+        <tr class="bg-light text-muted">
+          <th [ngClass]="arrowOrderNumberDirection ? 'text-dark' : ''" style="width: 45px; cursor: pointer;"
+            (click)="orderByFunction('arrowOrderNumberDirection', 'id')">
+            #
+            <i [class]="arrowOrderNumberDirection"></i>
+          </th>
+          <th [ngClass]="arrowTitleDirection ? 'text-dark' : ''" style="width: 200px; cursor: pointer;"
+            (click)="orderByFunction('arrowTitleDirection', 'topic')">
+            Title
+            <i [class]="arrowTitleDirection"></i>
+          </th>
+          <th [ngClass]="arrowTextDirection ? 'text-dark' : ''" style="cursor: pointer;"
+            (click)="orderByFunction('arrowTextDirection', 'message')">
+            Text
+            <i [class]="arrowTextDirection"></i>
+          </th>
+          <th style="width: 70px;">Image</th>
+          <th style="width: 55px;">Edit</th>
+          <th style="width: 70px;">Delete</th>
+        </tr>
+        <tr
+          *ngFor="let discount of arrayDiscounts | searchBy: searchWord: propertiesSearch | orderBy: order: reverseStatus;">
+          <td>{{ discount.id }}</td>
+          <td>{{ discount.title }}</td>
+          <td>{{ discount.text }}</td>
+          <td>
+            <img [src]="discount.image" alt="" width="50px" height="50px" (click)="smModalImage.show()" style="cursor: pointer;">
+          </td>
+          <td>
+            <input type="button" class="btn btn-dark btn-sm" value="Edit"
+              (click)="editDiscount(discount); lgModal.show()">
+          </td>
+          <td>
+            <input type="button" class="btn btn-dark btn-sm" value="Delete" (click)="getDeletedDiscountId(discount.id)">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--Large modal-->
+<div bsModal #lgModal="bs-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <!-- ! //////////////////////////////////////////////////////////// -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Discount modal</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide(); resetInputs(); " aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form class="small">
+          <div class="form-group">
+            <label for="discountTitle">Title</label>
+            <input type="text" class="form-control form-control-sm" id="discountTitle" [(ngModel)]="discountTitle"
+              name="discountTitle">
+          </div>
+          <div class="form-group">
+            <label for="discountText">Text</label>
+            <textarea class="form-control form-control-sm" rows="3" id="discountText" [(ngModel)]="discountText"
+              name="discountText"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="discountImage">Image</label>
+            <input #inputFile (change)='uploadFile($event)' type="file" class="form-control form-control-sm"
+              id="discountImage" aria-label="file example">
+          </div>
+          <div class="progress mb-3">
+            <div class="progress-bar progress-bar-striped bg-dark" role="progressbar"
+              [style.width]="uploadProgressStatus ? (uploadProgress | async) + '%' : '0' + '%'" aria-valuemin="0"
+              aria-valuemax="100"></div>
+          </div>
+          <div class="image mb-3" *ngIf="imageStatus" style="width: 200px; height: 200px;">
+            <img [src]="discountImage" alt="" style="width: 100%; height: 100%;">
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          (click)="lgModal.hide(); resetInputs()">Close</button>
+        <button type="button" class="btn btn-dark"
+          [disabled]="discountTitle.trim() == '' || discountText.trim() == '' || discountImage.trim() == ''"
+          (click)="addDiscount(); lgModal.hide(); resetInputs()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Small modal-->
+<div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="col-6">
+            <button type="button" class="btn btn-dark col" (click)="smModal.hide()">Dismiss</button>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-danger col" (click)="deleteDiscount(); smModal.hide()">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Small modal #2-->
+<div bsModal #smModalImage="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="col-6">
+            <button type="button" class="btn btn-dark col" (click)="smModal.hide()">Dismiss</button>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-danger col" (click)="deleteDiscount(); smModal.hide()">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

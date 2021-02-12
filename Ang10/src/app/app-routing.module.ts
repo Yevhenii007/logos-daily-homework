@@ -17,6 +17,7 @@ import { SiteAdminComponent } from './pages/works/site-hw17-24/admin/site-admin.
 import { SiteAdminCategoryComponent } from './pages/works/site-hw17-24/admin/site-admin-category/site-admin-category.component';
 import { SiteAdminProductsComponent } from './pages/works/site-hw17-24/admin/site-admin-products/site-admin-products.component';
 import { SiteAdminBlogsComponent } from './pages/works/site-hw17-24/admin/site-admin-blogs/site-admin-blogs.component';
+import { SiteAdminDiscountComponent } from './pages/works/site-hw17-24/admin/site-admin-discount/site-admin-discount.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -38,7 +39,8 @@ const routes: Routes = [
           { path: 'site-about', component: SiteAboutComponent },
           {
             path: 'site-admin', component: SiteAdminComponent, children: [
-              { path: '', redirectTo: 'site-admin-category', pathMatch: 'full' },
+              { path: '', redirectTo: 'site-admin-discounts', pathMatch: 'full' },
+              { path: 'site-admin-discounts', component: SiteAdminDiscountComponent },
               { path: 'site-admin-category', component: SiteAdminCategoryComponent },
               { path: 'site-admin-products', component: SiteAdminProductsComponent },
               { path: 'site-admin-blogs', component: SiteAdminBlogsComponent }

@@ -1,44 +1,108 @@
-<form>
-  <div class="mb-3">
-    <label for="title" class="form-label" hidden>Title</label>
-    <input type="text" placeholder="title here.." class="form-control" id="title" [(ngModel)]="blogTitle" name="blogTitle">
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    Blog
+    <button class="btn btn-dark col-2" type="button" (click)="lgModal.show()">Add</button>
   </div>
-  <div class="mb-3">
-    <label for="text" class="form-label" hidden>Text</label>
-    <textarea class="form-control" style="height: 100px;" placeholder="text here.." id="text" [(ngModel)]="blogText" name="blogText"></textarea>
+  <div class="card-body">
+    <input class="form-control" type="text" placeholder="filter blog.." [(ngModel)]="searchWord" name="searchWord">
+
+    <hr style="border: 0px;">
+
+    <table class="table table-bordered table-sm small">
+      <tbody>
+        <tr class="bg-light text-muted">
+          <th [ngClass]="arrowOrderNumberDirection ? 'text-dark' : ''" style="width: 45px; cursor: pointer;"
+            (click)="orderByFunction('arrowOrderNumberDirection', 'id')">
+            #
+            <i [class]="arrowOrderNumberDirection"></i>
+          </th>
+          <th [ngClass]="arrowTitleDirection ? 'text-dark' : ''" style="cursor: pointer;"
+            (click)="orderByFunction('arrowTitleDirection', 'topic')">
+            Title
+            <i [class]="arrowTitleDirection"></i>
+          </th>
+          <th [ngClass]="arrowTextDirection ? 'text-dark' : ''" style="cursor: pointer;"
+            (click)="orderByFunction('arrowTextDirection', 'message')">
+            Text
+            <i [class]="arrowTextDirection"></i>
+          </th>
+          <th [ngClass]="arrowDateDirection ? 'text-dark' : ''" style="cursor: pointer;"
+            (click)="orderByFunction('arrowDateDirection', 'date')">
+            Date
+            <i [class]="arrowDateDirection"></i>
+          </th>
+          <th [ngClass]="arrowAuthorDirection ? 'text-dark' : ''" style="cursor: pointer;"
+            (click)="orderByFunction('arrowAuthorDirection', 'postedBy')">
+            Author
+            <i [class]="arrowAuthorDirection"></i>
+          </th>
+          <th style="width: 55px;">Edit</th>
+          <th style="width: 70px;">Delete</th>
+        </tr>
+        <tr *ngFor="let blog of arrayBlogs | searchBy: searchWord: propertiesSearch | orderBy: order: reverseStatus;">
+          <td>{{ blog.id }}</td>
+          <td>{{ blog.topic }}</td>
+          <td>{{ blog.message }}</td>
+          <td>{{ blog.date | date:'MMM d, yyyy' }}</td>
+          <td>{{ blog.postedBy }}</td>
+          <td>
+            <input type="button" class="btn btn-dark btn-sm" value="Edit" (click)="editBlog(blog); lgModal.show()">
+          </td>
+          <td>
+            <input type="button" class="btn btn-dark btn-sm" value="Delete" (click)="deleteBlog(blog)">
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="mb-3">
-    <label for="author" class="form-label" hidden>Author</label>
-    <input type="text" placeholder="author here.." class="form-control" id="author" [(ngModel)]="blogAuthor" name="blogAuthor">
+</div>
+
+
+
+<!--Large modal-->
+<div bsModal #lgModal="bs-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-dialog-centered">
+    <!-- ! //////////////////////////////////////////////////////////// -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Category modal</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide(); cleaningInputs(); " aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <div class="mb-3">
+            <label for="title" class="form-label" hidden>Title</label>
+            <input type="text" placeholder="title here.." class="form-control" id="title" [(ngModel)]="blogTitle"
+              name="blogTitle">
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label" hidden>Text</label>
+            <textarea class="form-control" style="height: 100px;" placeholder="text here.." id="text"
+              [(ngModel)]="blogText" name="blogText"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="author" class="form-label" hidden>Author</label>
+            <input type="text" placeholder="author here.." class="form-control" id="author" [(ngModel)]="blogAuthor"
+              name="blogAuthor">
+          </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          (click)="lgModal.hide(); cleaningInputs()">Close</button>
+        <button type="button" [class]="!editStatus ? 'btn btn-dark' : 'btn btn-light border-dark'"
+          [innerText]="!editStatus ? 'Add' : 'Save edit'"
+          (click)="addBlog(); lgModal.hide(); cleaningInputs()"></button>
+
+        <!-- <button type="button" class="btn btn-dark"
+          (click)="addCategory(); lgModal.hide(); cleaningInputs()">Add</button> -->
+        <!-- ! [disabled]="nameEN.trim() == '' || nameUA.trim() == ''" -->
+      </div>
+    </div>
   </div>
-  <button type="button" [class]="!editStatus ? 'btn btn-dark' : 'btn btn-light border-dark'" [innerText]="!editStatus ? 'Add' : 'Save edit'" (click)="addBlog()"></button>
-</form>
-<hr>
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Text</th>
-      <th>Date</th>
-      <th>Author</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let blog of arrayBlogs; let i=index">
-      <th>{{ i+1 }}</th>
-      <td>{{ blog.topic }}</td>
-      <td>{{ blog.message }}</td>
-      <td>{{ blog.date | date:'MMM d, yyyy' }}</td>
-      <td>{{ blog.postedBy }}</td>
-      <td>
-        <input type="button" class="btn btn-dark" value="Edit" (click)="editBlog(blog)">
-      </td>
-      <td>
-        <input type="button" class="btn btn-dark" value="Delete" (click)="deleteBlog(blog)">
-      </td>
-    </tr>
-  </tbody>
-</table>
+</div>

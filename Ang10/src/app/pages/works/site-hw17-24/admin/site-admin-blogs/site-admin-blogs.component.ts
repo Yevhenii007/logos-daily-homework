@@ -16,6 +16,16 @@ export class SiteAdminBlogsComponent implements OnInit {
   blogText = '';
   blogImage = 'https://www.lapiec-pizza.com.ua/wp-content/uploads/2018/08/Salyami.png';
   editStatus: boolean;
+  searchWord: string;
+  propertiesSearch: Array<string> = ['topic', 'message', 'date', 'postedBy'];
+
+  arrowOrderNumberDirection = 'fa fa-chevron-up';
+  arrowTitleDirection: string;
+  arrowTextDirection: string;
+  arrowDateDirection: string;
+  arrowAuthorDirection: string;
+  order: string;
+  reverseStatus = true;
 
   arrayBlogs: Array<IBlogs> = [];
 
@@ -82,6 +92,21 @@ export class SiteAdminBlogsComponent implements OnInit {
     this.blogAuthor = '';
     this.blogTitle = '';
     this.blogText = '';
+  }
+
+  orderByFunction(arrowDirection: string, order: string): void {
+    this.arrowOrderNumberDirection = '';
+    this.arrowTitleDirection = '';
+    this.arrowTextDirection = '';
+    this.arrowDateDirection = '';
+    this.arrowAuthorDirection = '';
+    this.order = order;
+    this.reverseStatus = !this.reverseStatus;
+    if (this.reverseStatus) {
+      this[arrowDirection] = 'fa fa-chevron-down';
+    } else {
+      this[arrowDirection] = 'fa fa-chevron-up';
+    }
   }
 
 }

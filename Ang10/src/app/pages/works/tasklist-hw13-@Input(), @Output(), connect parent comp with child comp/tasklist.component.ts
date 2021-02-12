@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ITask } from '../../../shared/interfaces/task.interface';
-import { Task } from '../../../shared/models/task.model';
+import { Task } from '../../../shared/models/task.module';
 
 @Component({
   selector: 'app-tasklist',

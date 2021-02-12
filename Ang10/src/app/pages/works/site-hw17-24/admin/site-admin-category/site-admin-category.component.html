@@ -1,1 +1,94 @@
-<p>site-admin-category works!</p>
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    Category
+    <button class="btn btn-dark col-2" type="button" (click)="lgModal.show()">Add</button>
+  </div>
+  <div class="card-body">
+    <input class="form-control" type="text" placeholder="filter category.." [(ngModel)]="search" name="search">
+
+    <hr style="border: 0px;">
+
+    <table class="table table-bordered table-sm small">
+      <tbody>
+        <tr class="bg-light text-muted">
+          <th [ngClass]="arrowOrderNumberDirection ? 'text-dark' : ''" style="width: 40px; cursor: pointer;"
+            (click)="orderByFunction('arrowOrderNumberDirection', 'id')">
+            #
+            <i [class]="arrowOrderNumberDirection"></i>
+          </th>
+          <th [class]="arrowNameEnDirection ? 'text-dark' : ''" style="width: 400px; cursor: pointer;"
+            (click)="orderByFunction('arrowNameEnDirection', 'nameEN')">
+            Name EN
+            <i [class]="arrowNameEnDirection"></i>
+          </th>
+          <th [class]="arrowNameUaDirection ? 'text-dark' : ''" style="width: 400px; cursor: pointer;"
+            (click)="orderByFunction('arrowNameUaDirection', 'nameUA')">
+            Name UA
+            <i [class]="arrowNameUaDirection"></i>
+          </th>
+          <th style="width: 60px;">Delete</th>
+        </tr>
+        <tr *ngFor="let category of adminCategoriesArray | searchCategoryHw18:search | orderBy: order : reverseStatus;">
+          <!-- <th>{{ numeberingStatus ? adminCategoriesArray.length-i : i+1 }}</th> -->
+          <td>{{ category.id }}</td>
+          <td>{{ category.nameEN }}</td>
+          <td>{{ category.nameUA }}</td>
+          <td>
+            <button class="btn btn-dark btn-sm" type="button" (click)="smModal.show()"
+              (click)="getDeletedCategoryId(category.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--Large modal-->
+<div bsModal #lgModal="bs-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-dialog-centered">
+    <!-- ! //////////////////////////////////////////////////////////// -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Category modal</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide(); resetInputs(); " aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="col-6">
+            <input class="form-control" type="text" placeholder="name en here.." [(ngModel)]="nameEN" name="nameEN">
+          </div>
+          <div class="col-6">
+            <input class="form-control" type="text" placeholder="name ua here.." [(ngModel)]="nameUA" name="nameUA">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          (click)="lgModal.hide(); resetInputs()">Close</button>
+        <button type="button" class="btn btn-dark" [disabled]="nameEN.trim() == '' || nameUA.trim() == ''"
+          (click)="addCategory(); lgModal.hide(); resetInputs()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Small modal-->
+<div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="col-6">
+            <button type="button" class="btn btn-dark col" (click)="smModal.hide()">Dismiss</button>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-danger col" (click)="deleteCategory()"
+              (click)="smModal.hide()">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

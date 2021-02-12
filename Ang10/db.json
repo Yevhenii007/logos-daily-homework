@@ -32,5 +32,15 @@
       "message": "some text 4",
       "image": "https://www.lapiec-pizza.com.ua/wp-content/uploads/2018/08/Salyami.png"
     }
+  ],
+  "categories": [],
+  "products": [],
+  "discounts": [
+    {
+      "title": "dasf",
+      "text": "asdf",
+      "image": "https://firebasestorage.googleapis.com/v0/b/juniors-3f7e0.appspot.com/o/images%2Faktsiya-dlya-sajta-21.jpeg?alt=media&token=4fa8be97-23bb-4047-867b-e8babbaf4724",
+      "id": 1
+    }
   ]
 }
