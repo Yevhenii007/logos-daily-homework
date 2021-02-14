@@ -14,12 +14,12 @@ import { AngularFireStorage } from '@angular/fire/storage';
 export class SiteAdminDiscountComponent implements OnInit {
 
   searchWord: string;
-  propertiesSearch: Array<string> = ['id', 'title', 'text'];
+  propertiesSearch: Array<string> = ['title', 'text'];
 
   order: string;
   reverseStatus = true;
 
-  arrowOrderNumberDirection: string;
+  arrowOrderNumberDirection = 'fa fa-chevron-up';
   arrowTitleDirection: string;
   arrowTextDirection: string;
 
@@ -100,6 +100,12 @@ export class SiteAdminDiscountComponent implements OnInit {
     this.discountText = '';
     this.discountImage = '';
     this.imageStatus = false;
+    this.resetImage();
+  }
+  resetImage(): void {
+    this.imageStatus = false;
+    this.uploadProgressStatus = false;
+    this.discountImage = '';
   }
   uploadFile(event): void {
     const file = event.target.files[0];

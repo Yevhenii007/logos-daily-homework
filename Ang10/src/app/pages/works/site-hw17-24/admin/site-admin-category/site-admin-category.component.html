@@ -16,17 +16,17 @@
             #
             <i [class]="arrowOrderNumberDirection"></i>
           </th>
-          <th [class]="arrowNameEnDirection ? 'text-dark' : ''" style="width: 400px; cursor: pointer;"
+          <th [class]="arrowNameEnDirection ? 'text-dark' : ''" style="width: 464px; cursor: pointer;"
             (click)="orderByFunction('arrowNameEnDirection', 'nameEN')">
             Name EN
             <i [class]="arrowNameEnDirection"></i>
           </th>
-          <th [class]="arrowNameUaDirection ? 'text-dark' : ''" style="width: 400px; cursor: pointer;"
+          <th [class]="arrowNameUaDirection ? 'text-dark' : ''" style="width: 464px; cursor: pointer;"
             (click)="orderByFunction('arrowNameUaDirection', 'nameUA')">
             Name UA
             <i [class]="arrowNameUaDirection"></i>
           </th>
-          <th style="width: 60px;">Delete</th>
+          <th style="width: 70px;">Delete</th>
         </tr>
         <tr *ngFor="let category of adminCategoriesArray | searchCategoryHw18:search | orderBy: order : reverseStatus;">
           <!-- <th>{{ numeberingStatus ? adminCategoriesArray.length-i : i+1 }}</th> -->

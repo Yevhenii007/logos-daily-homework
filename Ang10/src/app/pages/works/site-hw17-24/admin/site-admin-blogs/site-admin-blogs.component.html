@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between align-items-center">
     Blog
-    <button class="btn btn-dark col-2" type="button" (click)="lgModal.show()">Add</button>
+    <button class="btn btn-dark col-2" type="button" (click)="lgModal.show(); resetInputs(); resetImage()">Add</button>
   </div>
   <div class="card-body">
     <input class="form-control" type="text" placeholder="filter blog.." [(ngModel)]="searchWord" name="searchWord">
@@ -11,7 +11,7 @@
     <table class="table table-bordered table-sm small">
       <tbody>
         <tr class="bg-light text-muted">
-          <th [ngClass]="arrowOrderNumberDirection ? 'text-dark' : ''" style="width: 45px; cursor: pointer;"
+          <th [ngClass]="arrowOrderNumberDirection ? 'text-dark' : ''" style="width: 40px; cursor: pointer;"
             (click)="orderByFunction('arrowOrderNumberDirection', 'id')">
             #
             <i [class]="arrowOrderNumberDirection"></i>
@@ -36,6 +36,7 @@
             Author
             <i [class]="arrowAuthorDirection"></i>
           </th>
+          <th style="width: 70px;">Image</th>
           <th style="width: 55px;">Edit</th>
           <th style="width: 70px;">Delete</th>
         </tr>
@@ -45,6 +46,10 @@
           <td>{{ blog.message }}</td>
           <td>{{ blog.date | date:'MMM d, yyyy' }}</td>
           <td>{{ blog.postedBy }}</td>
+          <td class="d-flex justify-content-center border-0">
+            <img [src]="blog.image" alt="" width="40px" height="40px"
+              (click)="smModalImage.show(); blogImage = blog.image" style="cursor: pointer;">
+          </td>
           <td>
             <input type="button" class="btn btn-dark btn-sm" value="Edit" (click)="editBlog(blog); lgModal.show()">
           </td>
@@ -71,37 +76,68 @@
         </button>
       </div>
       <div class="modal-body">
-
-        <form>
+        <form class="small">
           <div class="mb-3">
-            <label for="title" class="form-label" hidden>Title</label>
-            <input type="text" placeholder="title here.." class="form-control" id="title" [(ngModel)]="blogTitle"
+            <label for="title" class="form-label">Title</label>
+            <input type="text" placeholder="title here.." class="form-control form-control-sm" id="title" [(ngModel)]="blogTitle"
               name="blogTitle">
           </div>
           <div class="mb-3">
-            <label for="text" class="form-label" hidden>Text</label>
-            <textarea class="form-control" style="height: 100px;" placeholder="text here.." id="text"
+            <label for="text" class="form-label">Text</label>
+            <textarea class="form-control form-control-sm" style="height: 100px;" placeholder="text here.." id="text"
               [(ngModel)]="blogText" name="blogText"></textarea>
           </div>
           <div class="mb-3">
-            <label for="author" class="form-label" hidden>Author</label>
-            <input type="text" placeholder="author here.." class="form-control" id="author" [(ngModel)]="blogAuthor"
+            <label for="author" class="form-label">Author</label>
+            <input type="text" placeholder="author here.." class="form-control form-control-sm" id="author" [(ngModel)]="blogAuthor"
               name="blogAuthor">
           </div>
-
+          <div class="form-group" *ngIf="!imageStatus">
+            <label for="blogImage">Image</label>
+            <input #inputFile (change)='uploadFile($event)' type="file" class="form-control form-control-sm"
+              id="blogImage" aria-label="file example">
+          </div>
+          <div class="progress mb-3" *ngIf="!imageStatus">
+            <div class="progress-bar progress-bar-striped bg-dark" role="progressbar"
+              [style.width]="uploadProgressStatus ? (uploadProgress | async) + '%' : '0' + '%'" aria-valuemin="0"
+              aria-valuemax="100"></div>
+          </div>
+          <div class="image mb-3" *ngIf="imageStatus" style="position: relative;">
+            <div class="mb-2">
+              Image
+            </div>
+            <img [src]="blogImage" class="" style="width: 200px;">
+            <button type="button" class="close" style="position: absolute; left: 188px; top: 10px; color: red;"
+              (click)="resetImage()" aria-label="Close">
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                class="bi bi-x-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </button>
+          </div>
         </form>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
           (click)="lgModal.hide(); cleaningInputs()">Close</button>
         <button type="button" [class]="!editStatus ? 'btn btn-dark' : 'btn btn-light border-dark'"
           [innerText]="!editStatus ? 'Add' : 'Save edit'"
-          (click)="addBlog(); lgModal.hide(); cleaningInputs()"></button>
+          (click)="addBlog(); lgModal.hide(); cleaningInputs()" [disabled]="disabledBtn()"></button>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- <button type="button" class="btn btn-dark"
-          (click)="addCategory(); lgModal.hide(); cleaningInputs()">Add</button> -->
-        <!-- ! [disabled]="nameEN.trim() == '' || nameUA.trim() == ''" -->
+
+<!--Small modal #2-->
+<div bsModal #smModalImage="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="dialog-sizes-name2">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img [src]="blogImage" class="" style="width: 100%;">
       </div>
     </div>
   </div>

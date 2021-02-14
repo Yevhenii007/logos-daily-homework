@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between align-items-center">
     Discount
-    <button class="btn btn-dark col-2" type="button" (click)="lgModal.show()">Add</button>
+    <button class="btn btn-dark col-2" type="button" (click)="lgModal.show(); resetInputs(); resetImage();">Add</button>
   </div>
   <div class="card-body">
     <input class="form-control" type="text" placeholder="filter discount.." [(ngModel)]="searchWord" name="searchWord">
@@ -11,7 +11,7 @@
     <table class="table table-bordered table-sm small">
       <tbody>
         <tr class="bg-light text-muted">
-          <th [ngClass]="arrowOrderNumberDirection ? 'text-dark' : ''" style="width: 45px; cursor: pointer;"
+          <th [ngClass]="arrowOrderNumberDirection ? 'text-dark' : ''" style="width: 40px; cursor: pointer;"
             (click)="orderByFunction('arrowOrderNumberDirection', 'id')">
             #
             <i [class]="arrowOrderNumberDirection"></i>
@@ -35,15 +35,17 @@
           <td>{{ discount.id }}</td>
           <td>{{ discount.title }}</td>
           <td>{{ discount.text }}</td>
-          <td>
-            <img [src]="discount.image" alt="" width="50px" height="50px" (click)="smModalImage.show()" style="cursor: pointer;">
+          <td class="d-flex justify-content-center border-0">
+            <img [src]="discount.image" alt="" width="40px" height="40px"
+              (click)="smModalImage.show(); discountImage = discount.image" style="cursor: pointer;">
           </td>
           <td>
             <input type="button" class="btn btn-dark btn-sm" value="Edit"
               (click)="editDiscount(discount); lgModal.show()">
           </td>
           <td>
-            <input type="button" class="btn btn-dark btn-sm" value="Delete" (click)="getDeletedDiscountId(discount.id)">
+            <input type="button" class="btn btn-dark btn-sm" value="Delete"
+              (click)="getDeletedDiscountId(discount.id); smModal.show()">
           </td>
         </tr>
       </tbody>
@@ -75,18 +77,30 @@
             <textarea class="form-control form-control-sm" rows="3" id="discountText" [(ngModel)]="discountText"
               name="discountText"></textarea>
           </div>
-          <div class="form-group">
+          <div class="form-group" *ngIf="!imageStatus">
             <label for="discountImage">Image</label>
             <input #inputFile (change)='uploadFile($event)' type="file" class="form-control form-control-sm"
               id="discountImage" aria-label="file example">
           </div>
-          <div class="progress mb-3">
+          <div class="progress mb-3" *ngIf="!imageStatus">
             <div class="progress-bar progress-bar-striped bg-dark" role="progressbar"
               [style.width]="uploadProgressStatus ? (uploadProgress | async) + '%' : '0' + '%'" aria-valuemin="0"
               aria-valuemax="100"></div>
           </div>
-          <div class="image mb-3" *ngIf="imageStatus" style="width: 200px; height: 200px;">
-            <img [src]="discountImage" alt="" style="width: 100%; height: 100%;">
+          <div class="image mb-3" *ngIf="imageStatus" style="position: relative;">
+            <div class="mb-2">
+              Image
+            </div>
+            <img [src]="discountImage" class="" style="width: 200px;">
+            <button type="button" class="close" style="position: absolute; left: 188px; top: 10px; color: red;"
+              (click)="resetImage()" aria-label="Close">
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                class="bi bi-x-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </button>
           </div>
         </form>
 
@@ -122,18 +136,12 @@
 
 
 <!--Small modal #2-->
-<div bsModal #smModalImage="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-  <div class="modal-dialog modal-sm modal-dialog-centered">
+<div bsModal #smModalImage="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="dialog-sizes-name2">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
-        <div class="form-row">
-          <div class="col-6">
-            <button type="button" class="btn btn-dark col" (click)="smModal.hide()">Dismiss</button>
-          </div>
-          <div class="col-6">
-            <button type="button" class="btn btn-danger col" (click)="deleteDiscount(); smModal.hide()">Delete</button>
-          </div>
-        </div>
+        <img [src]="discountImage" class="" style="width: 100%;">
       </div>
     </div>
   </div>

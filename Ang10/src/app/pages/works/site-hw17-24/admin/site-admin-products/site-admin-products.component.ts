@@ -18,7 +18,7 @@ export class SiteAdminProductsComponent implements OnInit {
   categoriesArray: Array<ICategory> = [];
   categoryName: string;
   productsArray: Array<IProduct> = [];
-  productCategory: ICategory = { id: 1, nameEN: 'pizza', nameUA: 'піца', };
+  productCategory: ICategory;
   productID = 1;
   productNameEN: string;
   productNameUA: string;
@@ -87,6 +87,7 @@ export class SiteAdminProductsComponent implements OnInit {
       this.productImage
     );
     if (
+      this.categoryName !== '' &&
       this.productNameEN.trim() !== '' &&
       this.productNameUA.trim() !== '' &&
       this.productDescription.trim() !== '' &&
@@ -156,6 +157,11 @@ export class SiteAdminProductsComponent implements OnInit {
     this.uploadProgress = undefined;
     this.myInputVariable.nativeElement.value = '';
     this.uploadProgressStatus = false;
+  }
+  resetImage(): void {
+    this.imageStatus = false;
+    this.uploadProgressStatus = false;
+    this.productImage = '';
   }
 
   getEditedProductId(product: IProduct): void {

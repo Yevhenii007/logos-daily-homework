@@ -28,19 +28,108 @@
       "id": 4,
       "postedBy": "Iryna Batkivna",
       "topic": "Title 4",
-      "date": "2021-01-27T16:50:10.630Z",
+      "date": "2021-02-13T20:08:45.968Z",
       "message": "some text 4",
       "image": "https://www.lapiec-pizza.com.ua/wp-content/uploads/2018/08/Salyami.png"
     }
   ],
-  "categories": [],
-  "products": [],
+  "categories": [
+    {
+      "nameEN": "aaa",
+      "nameUA": "qqq",
+      "id": 1
+    },
+    {
+      "nameEN": "qqq",
+      "nameUA": "www",
+      "id": 2
+    },
+    {
+      "nameEN": "zzz",
+      "nameUA": "xxx",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "category": {
+        "nameEN": "qqq",
+        "nameUA": "www",
+        "id": 2
+      },
+      "nameEN": "sadf",
+      "nameUA": "asdf",
+      "description": "asdfs",
+      "weight": "asdf",
+      "price": 434,
+      "image": "https://firebasestorage.googleapis.com/v0/b/juniors-3f7e0.appspot.com/o/images%2Faktsiya-dlya-sajta-21.jpeg?alt=media&token=07f7c9fb-02d3-47cb-8c9c-a962154a39b3",
+      "count": 1
+    },
+    {
+      "id": 5,
+      "category": {
+        "nameEN": "zzz",
+        "nameUA": "xxx",
+        "id": 3
+      },
+      "nameEN": "rwrwe",
+      "nameUA": "wersdf",
+      "description": "sdfa",
+      "weight": "wer",
+      "price": 343,
+      "image": "https://firebasestorage.googleapis.com/v0/b/juniors-3f7e0.appspot.com/o/images%2Faktsiya-dlya-sajta-21.jpeg?alt=media&token=df1232e1-7a1f-4d69-95aa-e338a7aa3224",
+      "count": 1
+    },
+    {
+      "id": 6,
+      "category": {
+        "nameEN": "aaa",
+        "nameUA": "qqq",
+        "id": 1
+      },
+      "nameEN": "asdf",
+      "nameUA": "sadf",
+      "description": "sadf",
+      "weight": "asdf",
+      "price": 343,
+      "image": "https://firebasestorage.googleapis.com/v0/b/juniors-3f7e0.appspot.com/o/images%2Faktsiya-dlya-sajta-21.jpeg?alt=media&token=00818054-8e18-43c0-9726-c88fd4f64e4b",
+      "count": 1
+    },
+    {
+      "id": 7,
+      "category": {
+        "nameEN": "qqq",
+        "nameUA": "www",
+        "id": 2
+      },
+      "nameEN": "asdf",
+      "nameUA": "asdfsd",
+      "description": "asdf",
+      "weight": "fref",
+      "price": 342,
+      "image": "https://firebasestorage.googleapis.com/v0/b/juniors-3f7e0.appspot.com/o/images%2Faktsiya-dlya-sajta-21.jpeg?alt=media&token=9727bfa3-2e09-4574-a63e-f2e5127e3cf2",
+      "count": 1
+    }
+  ],
   "discounts": [
     {
-      "title": "dasf",
-      "text": "asdf",
-      "image": "https://firebasestorage.googleapis.com/v0/b/juniors-3f7e0.appspot.com/o/images%2Faktsiya-dlya-sajta-21.jpeg?alt=media&token=4fa8be97-23bb-4047-867b-e8babbaf4724",
-      "id": 1
+      "title": "aaaaa",
+      "text": "ssssss",
+      "image": "https://firebasestorage.googleapis.com/v0/b/juniors-3f7e0.appspot.com/o/images%2Faktsiya-dlya-sajta-21.jpeg?alt=media&token=54bb6972-0640-4fe1-80d9-2f035e394a7a",
+      "id": 2
+    },
+    {
+      "title": "gggggg",
+      "text": "tttttttt",
+      "image": "https://firebasestorage.googleapis.com/v0/b/juniors-3f7e0.appspot.com/o/images%2Faktsiya-dlya-sajta-21.jpeg?alt=media&token=02a2f7a7-ca4e-4faf-96f0-61d7dbe2a8f2",
+      "id": 3
+    },
+    {
+      "title": "vvvvvv",
+      "text": "hhhhhhhh",
+      "image": "https://firebasestorage.googleapis.com/v0/b/juniors-3f7e0.appspot.com/o/images%2Faktsiya-dlya-sajta-21.jpeg?alt=media&token=3d92c953-e792-4e76-8894-5a1733c9cf0e",
+      "id": 4
     }
   ]
 }
